@@ -4,7 +4,6 @@ title:  "Particle system"
 num: 3
 ---
 
-(@roman: self reminder to get back the updates from the french version)
 Let’s up the level a bit more. Particle system were made possible with hardware being more and more powerful. You can simulate quite complex behavior (fire, smoke, liquids…) or just use them to have fun, which will be our case. It can be pretty process intensive (difficult for your computer to compute it quickly) so don’t start straight with a million particles!
 
 ##o) What is a particle system?##

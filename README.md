@@ -1,6 +1,6 @@
-Template for the OTS Brussels material
-======================================
+Generative-Art-Processing
+=========================
 
-Want to create a new course? Then rejoice, for you just have to write down markdown and add pretty pictures.
+Material for the Generative Art Processing course.
 
-Not sure how to use it? Send a mail to an OTS Brussels organiser.
+(@roman: self reminder to get back the updates from the french version)
