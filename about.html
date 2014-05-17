@@ -11,8 +11,8 @@ This course was realised in the context of the serie of free workshops <a href="
 {% for author in site.data.authors %}
     <span class="authorName">{{ author.firstname }} {{ author.lastname }}</span>: {{ author.bio }}
     <br/>
-    Email: <a href"mailto:{{ author.email }}">{{ author.email }}</a> <br/>
-    Website: <a href"mailto:{{ author.webiste }}">{{ author.webiste }}</a>
+    Email: <a href="mailto:{{ author.email }}">{{ author.email }}</a> <br/>
+    Website: <a href="{{ author.website }}">{{ author.website }}</a>
     {% unless forloop.last %}
     </p>
     <p>   
