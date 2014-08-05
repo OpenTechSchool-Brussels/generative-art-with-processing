@@ -7,7 +7,7 @@ num: 3
 Let’s up the level a bit more. Particle system were made possible with hardware being more and more powerful. You can simulate quite complex behavior (fire, smoke, liquids…) or just use them to have fun, which will be our case. It can be pretty process intensive (difficult for your computer to compute it quickly) so don’t start straight with a million particles!
 
 ##o) What is a particle system?##
-You’ll never guess. It’s a system with particles inside. Yep, as simple as that. Usually you don’t have one or two, but closer to hundreds or even more than millions in complex simulation. In a particle system, the emphasis is not on the individual particles, but on what the create as a whole. This is pretty fitting for Generative Art. You search particle system on youtube, you’ll find quite mesmerizing visualisation. And once you’ve done yours, don’t hesitate to upload it too :D
+You’ll never guess. It’s a system with particles inside. Yep, as simple as that. Usually you don’t have one or two, but closer to hundreds or even more than millions in complex simulation. In a particle system, the emphasis is not on the individual particles, but on what they create as a whole. This is pretty fitting for Generative Art. You search particle system on youtube, you’ll find quite mesmerizing visualisation. And once you’ve done yours, don’t hesitate to upload it too :D
 
 In this log, we will learn to generate many particles, and we will use as previously the same position/speed/acceleration model to create beautiful curvic movements. Once you have this system running, you can chose either to draw only the particles, or their trajectories as a whole.
 
