@@ -117,13 +117,13 @@ for(int i = 0; i < 100; i += 1) {
 }
 ```
 
-So, what does such function does? A for loop will repeat part of the code until a condition is met. It can be understood in english as: “First do something (the initialisation). Then repeatedly execute some code, until I decide you’re finished (the condition). Each time you have finished executing the code between braces, do one thing in particular (usually an iteration over a counter).
+So, what is such block of code doing? A for loop will repeat a block of code until a condition is met. It can be understood in english as: "First do something (the initialisation). Then repeatedly execute code (the block of code) until I decide you’re finished (the condition). Each time you have finished executing the code between braces, do one thing in particular (usually an iteration over a counter)".
 
 To be more precise, a for loop is defined by 4 components:
-- First the initialisation: int i = 0;. We define and instantiate here a new variable. Not a float, but an integer. We saw this type earlier with relation to colors. An integer is defined by its type: int, it is a variable with no fractional part, no numbers after the coma.
-- Then you have the condition: i < 100. A condition is something that is true or false. In our case, we use the mathematical symbol < to check if a value is inferior to another one. Other symbol allow for different test (such as > for superior to, or == to test the equality. Not to be confused with = for affection, a classic mistake.)
-- Then you have the iteration over the index: i = i + 1;. Here we add one (i.e. increment) to the i variable each time we execute the for loop.
-- Last,  between braces { } you have the code that is executed in the loop function.
+- First the *initialisation*, here `int i = 0;`. We define and instantiate here a new variable. Not a float, but an integer. We saw this type earlier with relation to colors. An integer is defined by its type: int, it is a variable with no fractional part, no numbers after the coma.
+- Then you have the *condition*, here `i < 100`. A condition is something that is true or false. In our case, we use the mathematical symbol < to check if a value is inferior to another one. Other symbol allow for different test (such as > for superior to, or == to test the equality. Not to be confused with = for affection, a classic mistake.)
+- Then you have the *update*, here (as often) an iteration over an index: `i = i + 1;`.
+- Last,  you have the *block of code*, located between braces `{ }`, that is executed by the for loop.
 
 Try to use such for loop to draw lines as a batch. You can use many loops to draw complex batches of lines. Try it especially with not too high value of alpha. You might get surprised how well it renders on screen! For instance:
 
