@@ -183,7 +183,7 @@ void keyPressed() {
 
 Unfortunately here the name is always the same. If you want save multiple frames like output-001.png, output-002.png, ... modify the function as follow: `saveFrame("output-###.png");`.
 
-Let's finish on a full course meal:
+Let's finish on a full course meal. You should know everything there but one thing: `mouseX` and `mouseY`. They are standards variable, already defined and handled by Processing. As expected, they respectfully give you the position of the cursor in your canvas in x and y.
 
 ```java
 void setup() {
