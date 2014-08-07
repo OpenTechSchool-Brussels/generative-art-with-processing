@@ -225,5 +225,3 @@ void draw() {
 }
 ```
 
-That’s pretty nice. But … we’re always desiring more don’t we? This is cool because we have not one line, but seven of them. But if we want to have 11, we would need to put 11 instead of 7 all over the code. If only there was one way to store a value and call it at many places of the code. Think about a way to do it? Yep, using variable. If you want to be able to change easily the number of line, create a global variable (it must be an integer, an int), affect it a value in setup and replace all 7 (the statically defined number of lines) in the code by the newly created variable.
-
