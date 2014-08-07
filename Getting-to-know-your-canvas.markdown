@@ -183,7 +183,7 @@ void keyPressed() {
 
 Unfortunately here the name is always the same. If you want save multiple frames like output-001.png, output-002.png, ... modify the function as follow: `saveFrame("output-###.png");`.
 
-##e) Looping##
+##g) Looping##
 Computing is all about automatisation. Drawing rectangles one by one is nice but sometimes you want to repeat one part of your code many time, only with slight variations (like ... based on a counter). You can either rewrite many times your code (not only a lenghty process, but an error prone one when you need to update it) or use a new structure: the for loop:
 
 ```java
@@ -226,6 +226,8 @@ for(int i = 0; i < 100; i = i + 1) {
 ```
 
 Try to add little colors to such display and you'll get back in the 80's in a matter of seconds.
+
+##h) The full monty##
 
 Some time you only want repetition, with no variations (i.e. not using the evolving counter in the block of code inside the loop). We'll finish this chapter on a full course meal with such repetition. You should know everything there but one thing: `mouseX` and `mouseY`. They are standards variable, already defined and handled by Processing. As expected, they respectfully give you the position of the cursor in your canvas in x and y.
 
