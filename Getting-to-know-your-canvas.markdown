@@ -183,7 +183,41 @@ void keyPressed() {
 
 Unfortunately here the name is always the same. If you want save multiple frames like output-001.png, output-002.png, ... modify the function as follow: `saveFrame("output-###.png");`.
 
-Let's finish on a full course meal. You should know everything there but one thing: `mouseX` and `mouseY`. They are standards variable, already defined and handled by Processing. As expected, they respectfully give you the position of the cursor in your canvas in x and y.
+##e) Looping##
+Computing is all about automatisation. Drawing rectangles one by one is nice but sometimes you want to repeat one part of your code many time, only with slight variations (like ... based on a counter). You can either rewrite many times your code (not only a lenghty process, but an error prone one when you need to update it) or use a new structure: the for loop:
+
+```java
+for(int i = 0; i < 100; i = i + 1) {
+ rect( 10 + 40*i, 100, 10, 10);
+}
+```
+
+So, what is such block of code doing? A for loop will repeat a block of code until a condition is met. It can be understood in english as: "First do something (the initialisation). Then repeatedly execute code (the block of code) until I decide you’re finished (the condition). Each time you have finished executing the code between braces, do one thing in particular (usually an iteration over a counter)".
+
+To be more precise, a for loop is defined by 4 components:
+
+* First the *initialisation*, here `int i = 0;`. We define and instantiate here a new variable. Not a float, but an integer. We saw this type earlier with relation to colors. An integer is defined by its type: int, it is a variable with no fractional part, no numbers after the coma.
+
+* Then you have the *condition*, here `i < 100`. A condition is something that is true or false. In our case, we use the mathematical symbol < to check if a value is inferior to another one. Other symbol allow for different test (such as > for superior to, or == to test the equality. Not to be confused with = for affection, a classic mistake.)
+
+* Then you have the *update*, here (as often) an iteration over an index: `i = i + 1;`.
+
+* Last,  you have the *block of code*, located between braces `{ }`, that is executed by the for loop.
+
+Even better, you can nest loops! (Don't mess up the indexes on each loops!)
+
+```java
+for(int i = 0; i < 100; i = i + 1) {
+ for(int j = 0; j < 100; j = j + 1) {
+  rect( 10 + 40*i, 10 + 40 *j, 10, 10);
+ }
+}
+```
+
+Try to add little colors to such display and you'll get back in the 80's in a matter of seconds.
+
+Some time you only want repetition, with no variations (i.e. not using the evolving counter in the block of code inside the loop). We'll finish this chapter on a full course meal with such repetition. You should know everything there but one thing: `mouseX` and `mouseY`. They are standards variable, already defined and handled by Processing. As expected, they respectfully give you the position of the cursor in your canvas in x and y.
+
 
 ```java
 void setup() {
@@ -199,11 +233,10 @@ void draw() {
   fill(0, 0, 0, 5); // Bahhh, Processing keep an ugly grey when alpha is too low :(
   rect(0,0,width, height);
   
-  fill(random(255), random(255), random(255), random(255));
-  rect(mouseX + random(-20,20), mouseY + random(-20,20), random(2,5), random(2,5));
-
-  fill(random(255), random(255), random(255), random(255));
-  rect(mouseX + random(-20,20), mouseY + random(-20,20), random(2,5), random(2,5));
+  for(int i=0; i<5; i++) {
+   fill(random(255), random(255), random(255), random(255));
+   rect(mouseX + random(-20,20), mouseY + random(-20,20), random(2,5), random(2,5));
+  }
   
 }
 
