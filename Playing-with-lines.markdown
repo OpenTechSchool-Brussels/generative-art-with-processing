@@ -9,7 +9,7 @@ One of the rule of generative art could be “draw a lot”. By drawing a lot of
 
 As the title would let you think, In this section our primitive will be lines. You’ve already learned a lot, don’t hesitate to tweak and to try to apply what you’ve learned along the way.
 
-A line is defined by the two dots it joins. So we need two rules. One for each dots. Let’s start with a direct example. We will use two more standards variable: `mouseX` and `mouseY`, referring to the x and y position of the cursor in the Processing application window. Let’s use them to draw lines from the center to your cursor. For that, just write the following code in your draw function:
+A line is defined by the two dots it joins. So we need two rules. One for each dots. Let’s start with a simple example, just write the following code in your draw function:
 
 ```java 
 line(width/2, height/2, mouseX, mouseY);
@@ -187,7 +187,7 @@ void draw() {
 
 So, you already automated a bit of the task, but there is still one repetition... That 10 is mentionned twice. An array should know its length right? Well, lucky you, in our case it does. In order to call a variable internal to an object (or a function for that matter) you need to use the `.` operator. The internal variable corresponding to the length of the array is called ... length. Good. So if you want to apply that to our previous call, you'd write `arrayOfFloats.length`. Go ahead, try to replace `10` by that new variable in the `for` loop. 
 
-Ok, now we know how to use array (did you already think of creative to use your new powers?). Let’s use them to have maaaaany lines. First, as for other variables, we need to define those arrays globally. Then whatever calculus we made on our previously separated variables, we’ll do on each element of the array. This might be a bit hard, but try already by yourself to reorganise your code. You can have a pick at the following way to do so if you’re stuck.
+Ok, now we know how to use array (did you already think of creative to use your new powers?). Let’s use them to have maaaaany lines. First, as for other variables, we need to define those arrays globally. Then whatever calculus we made on our previously separated variables, we’ll do on each element of the array. This might be a bit hard, but try already by yourself to reorganise your code. You can have a pick at the following way to do so if you’re stuck. If you end up going straight to the answer, be sure to experiment with it enough to be sure that you understand each part of the code.
 
 ```java
 int k; //Will parametrise the number of lines
@@ -205,13 +205,15 @@ void setup() {
   x1 = new float[k]; v1 = new float[k]; a1 = new float[k];
   x2 = new float[k]; v2 = new float[k]; a2 = new float[k];
 
+  // Initialise acceleration, speed and position
   for(int i=0; i<k; i++) { // i++ is the same as i+=1 or i=i+1
-    //Initialising acceleration
+  
     a1[i] = random(-1,1) + (width/2 - x1[i])/3000;
     a2[i] = random(-1,1) + (width/2 - x2[i])/3000;
-    //Initialising speed
-    v1[i] = 0; v2[i] = 0;
-    //Initialising at same position (you might want to try random)
+    
+    v1[i] = 0;
+    v2[i] = 0;
+    
     x1[i] = width/2;
     x2[i] = width/2;
   }
@@ -223,6 +225,7 @@ void draw() {
 
   //Updating acceleration, speed and position
   for(int i=0; i<k; i++) {
+  
     a1[i] = random(-1, 1) + ( (width/2-x1[i]) /3000);
     a2[i] = random(-1, 1) + ( (width/2-x2[i]) /3000);
 
