@@ -178,8 +178,6 @@ float[] x1,x2,v1,v2,a1,a2; // You can instantiate many variable at once
                    //  / when they have the same type. Just
    //  / separate them with a comma
 void setup() {
-  //Don’t forget to indent (put a left margin) when you enter a new
-  // / block of code, it makes the code easier to read.
   size(displayWidth, displayHeight);
   background(0);
   noCursor();
@@ -189,39 +187,41 @@ void setup() {
   // You can put many command on a same line
   x1 = new float[k]; v1 = new float[k]; a1 = new float[k];
   x2 = new float[k]; v2 = new float[k]; a2 = new float[k];
-   
+
   for(int i=0; i<k; i++) { // i++ is the same as i+=1 or i=i+1
     //Initialising acceleration
     a1[i] = random(-1,1) + (width/2 - x1[i])/3000;
     a2[i] = random(-1,1) + (width/2 - x2[i])/3000;
     //Initialising speed
     v1[i] = 0; v2[i] = 0;
-    //Initialising position a bit randomly
-    x1[i] = width/2 -50 + random(100);
-    x2[i] =  -50 + random(100);
+    //Initialising at same position (you might want to try random)
+    x1[i] = width/2;
+    x2[i] = width/2;
   }
- 
+
 }
 
 
 void draw() {
- 
+
   //Updating acceleration, speed and position
   for(int i=0; i<k; i++) {
     a1[i] = random(-1, 1) + ( (width/2-x1[i]) /3000);
     a2[i] = random(-1, 1) + ( (width/2-x2[i]) /3000);
 
-    v1[i] += a1[i]; v2[i] += a2[i];
- 
-    x1[i] += v1[i]; x2[i] += v2[i];
+    v1[i] += a1[i];
+    v2[i] += a2[i];
+
+    x1[i] += v1[i];
+    x2[i] += v2[i];
   }
- 
+
  //drawing the lines
   stroke(255, 255, 255, 20);
   for(int i=0; i<k; i++) {
-    line( x1[i], 100, x2[i], 500);
+    line( x1[i], 100, x2[i], height-100);
   }
- 
+
 }
 ```
 
