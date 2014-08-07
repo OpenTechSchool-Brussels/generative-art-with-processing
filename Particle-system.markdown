@@ -9,24 +9,46 @@ Let’s up the level a bit more. Particle system were made possible with hardwar
 ##o) What is a particle system?##
 You’ll never guess. It’s a system with particles inside. Particles are physical objects with a position, speed and acceleration. They can be represented as you see fit (would that be individual shape, trajectory or links between them) and can (or not) interact with each other. Usually you don’t have one or two, but closer to hundreds or even more than millions in complex simulation. In a particle system, the emphasis is not on the individual particles, but on what they create as a whole. This is pretty fitting for Generative Art. You search particle system on youtube, you’ll find quite mesmerizing visualisation. And once you’ve done yours, don’t hesitate to upload it too :D
 
-##a) Spread and shine##
-If before we had dots moving alone a frame, with only `x` evolving, now we have the whole deal: `(x,y)`. While we could treat each information independently (at the cost of repeted code, implying more energy & time spent, and errors) we can see them as a whole, as a complexe variable, called an object. There are many kind of object, in our case, this one is called a `PVector` (P for processing, Vector for ... vector). As such, it defines a new type of variable. It can be used to store 2D or 3D data, in our case we'll only take care of 2D vectors. We hence define a particle:
+##a) Object, variables, methods & PVector##
+If before we had dots moving alone a frame, with only `x` evolving, now we have the whole deal: `(x,y)`. While we could treat each information independently (at the cost of repeted code, implying more energy & time spent, and errors) we can see them as a whole, as a complexe variable, called an object. There are many kind of object, in our case, this one is called a `PVector` (P for processing, Vector for ... vector). As such, it defines a new type of variable. It can be used to store 2D or 3D data, in our case we'll only take care of 2D vectors.
+
+But a `PVector` is not a variable type, it's an object type and hence define an object. Objects don't exactly behave as variables. They store some, so you can access them, but on top of that you have inner functions (called methods), in order to act on them. At first, when imagining an object, you can imagine a human. Variables of the human object could be its name (text variable), its age (int variable) and its height (float variable). Its methods could be "breathing", "running" or "screaming". Beside all that, since we handle a complexe object and not anymore a simple variable, we need to constructe it. This is done by calling a function, called the constructor (which handly has the same name than the type), it handle the whole initialisation of the object.
+
+So, let's review the different possibility of the `PVector` type. Always keep in mind `PVector` is not an object itself, but a type. So the inner variables and methods will be of the instance of this type. Let's see some of the possibilties of `PVector` instances.
 
 ```java
-PVector p,s,a; //not anymore x, but “p” for position.
-a = new PVector(); // By default a PVector is (0,0)
-s = new PVector();
-p = new PVector();
+PVector p1, p2, p3; // As any other type, we declare our object at the root.
+
+void setup() {
+  // We define and initialise it by calling the constructor
+  p1 = new PVector();     // By default x = 0 and y = 0;
+  p2 = new PVector(1,3);  // When precised, the constructor will take x and y values
+  p3 = new PVector(10,10);
+}
+
+void draw() {
+
+  // Variables. Accessing them.
+  p1.x = 5;
+  p1.y = p2.y + p3.y;
+
+  // Method. Using them.
+  float distance = p3.mag(); // Return the mag of the PVector, its lenght
+  p1.random2D(); // Set p1 as a random 2D vector with a unitary lenght (p3.mag() == 0)
+  
+  // Unfortunately we can't use classic + - * / operators, we hence need the next methods
+  p1.add(p2); // Add p2 to p1
+  p3.sub(p2); // Substract p2 to p3
+  p1.mult(5); // Multiple both x and y by 5
+  p3.div(10); // Divide both x and y by 10
+  
+}
 ```
 
-PVector are complex data type. Not only to they store x and y information, but they also have functions of their own (called in this case method, because those functions are linked with a specific structure). In order to access those inside variables and methods, you need to refer to them from the PVector variable, using the dot: .. To create two vector and to add them:
+If you want to learn more about PVector methods, you can check their Processing reference pages: http://processing.org/reference/PVector.html. The reference page - http://processing.org/reference/ - is all in all the best ressource to check first or just to read through in order to learn more about the potentials of Processing. If you're wondering why `p1.y = p2.y + p3.y;` can work while we said we couldn't use `+`, it's because here we're not handling the `PVector` but `y`, one of their inner variable, which is a float, and we can use `+` on floats.
 
-```java
-PVector p1 = new PVector(); PVector p2 = new PVector();
-p1.x = 100; p1.y = 200; // access and modify the x and y values.
-p2.add( p1 );        // Adding the p1 vector to p2.
-```
 
+##b) Spread and shine##
 Let’s look back at the code we wrote in the previous log (i.e.dealing with line, array of variables and random acceleration) and apply it to particles. Try to do it by yourself, or at least to think a bit how you would do that. The following code is one way to do so, in which the particles start from the left, and go toward the right:
 
 ```java	
