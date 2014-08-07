@@ -17,6 +17,21 @@ line(width/2, height/2, mouseX, mouseY);
 
 Neat isn’t it? But feeding it with information from the mouse will only create nice results when you have interesting patterns over the mouse. It’ more reactive art than generative art. Let’s solve that side of the problem. 
 
+##o) Random for the win##
+Nahh, not for the wine (tho I'll go get some) but for the win. You might think that previous page skills are child's play, but the power of a creator is in how he's using his tools rather on how many or how complexe they are. With a gentle touch, simplest thing as random lines generation can generate feelings, emotions and regulate their evolution over the graphic's span life. Try to explore your sensibility on something as simple as line generation. Once done with it, give a try at the example below, play with it and experiments on the different variations.
+
+```java 
+void setup() {
+  size(displayWidth, displayHeight);
+  background(0, 0, 0);
+  noCursor(); noFill(); stroke(255,7); // Yep, as long as you use ";" you can put
+                                       //    multiple line of code on the same line
+}
+
+void draw() {
+  line(random(0,width), random(0,height), random(0,width), random(0,height));
+}
+```
 
 ##a) Random on a frame##
 Let’s add constraint on the position of the dots. Let’s constrain them to frames. We can imagine many kind of frames, like rectangles or circle. But in our case we’ll use two horizontal parallel lines. Once you feel at ease with the code, you can try other kind of frames.
