@@ -146,7 +146,7 @@ for(int i=0; i<100; i = i+1) {
 ```
 
 ##d) Handling multiple Lines##
-Good, we have multiple lines. But they are static! Not like the one we had before, with the gorgeous movement! In the for loop, each line didn’t have a behavior, they were merely plotted. If we want to have multiple lines with behaviors, we need many variables. We could define a heck load of them (x1_0, x1_1, x1_2 ...) but that’s not really the way to do it. Programming is all about simplifying, automating and organising. When we need to store multiple variable, the commonest data structure is the array.
+Good, we have multiple lines. But they are static! Not like the one we had before, with the gorgeous movement! In the for loop, the lines didn’t have a behavior, they were merely plotted. If we want to have multiple lines with behaviors, we need many variables. We could define a heck load of them (x1_0, x1_1, x1_2 ...) but that’s not really the way to do it. Programming is all about simplifying, automating and organising. When we need to store multiple variable, the commonest data structure is the array.
 
 An array is just a list of variables, indexed over a integer. If you define an array of ten elements, you can ask it to give you its fifth element:
 
@@ -158,12 +158,30 @@ An array is just a list of variables, indexed over a integer. If you define an a
 No, there was no mistake in the writing (not this time at least), the arrays index start at 0, not 1. So if you call `arrayOfFloats[1]`, you will not get the first element, but the second. This is why to call the fifth value, we need `arrayOfFloats[4]`.
 
 
-When you want to access or modify the value of each element of an array, you could call them one by one but... that wouldn’t be very simple or automated would it be? We need a way to create a variable that would go from 0 to 9... how could we do that? Yep, with a for loop. For instance, if you want to fill your array with random number:
+When you want to access or modify the value of each element of an array, you could call them one by one but... that wouldn’t be very simple or automated would it be? We need a way to create a variable that would go from 0 to the size of the array... how could we do that? Yep, with a for loop. Let's imagine we want to fill an array with zero value at start, and then add random values to each of its cells. An array is a complexe variable but still a variable. All you learnt about variable (declaration, definition, initialisation...) can be applied to arrays. So this would look like:
+
 
 ```java
+// Declare the variable/array at root for it to be used globaly (i.e. always remembered)
 float[] arrayOfFloats = new float[10]; // Defines an array of floats, of size 10.
-    for(int i=0; i<10; i+=1) {
-        arrayOfFloats[i] = random();
+
+void setup() {
+  //Define it in setup
+  arrayOfFloats = new float[10];
+  
+  //Initialise it in setup
+  for(int i=0; i<10; i+=1) {
+    arrayOfFloats[i] = 0;
+  }
+  
+}
+
+void draw() {
+
+  //Use it in draw
+  for(int i=0; i<10; i+=1) {
+    arrayOfFloats[i] += random();
+    
 } 
 ```
 
