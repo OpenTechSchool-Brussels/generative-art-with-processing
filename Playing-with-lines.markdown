@@ -121,13 +121,13 @@ So, what is such block of code doing? A for loop will repeat a block of code unt
 
 To be more precise, a for loop is defined by 4 components:
 
-- First the *initialisation*, here `int i = 0;`. We define and instantiate here a new variable. Not a float, but an integer. We saw this type earlier with relation to colors. An integer is defined by its type: int, it is a variable with no fractional part, no numbers after the coma.
+* First the *initialisation*, here `int i = 0;`. We define and instantiate here a new variable. Not a float, but an integer. We saw this type earlier with relation to colors. An integer is defined by its type: int, it is a variable with no fractional part, no numbers after the coma.
 
-- Then you have the *condition*, here `i < 100`. A condition is something that is true or false. In our case, we use the mathematical symbol < to check if a value is inferior to another one. Other symbol allow for different test (such as > for superior to, or == to test the equality. Not to be confused with = for affection, a classic mistake.)
+* Then you have the *condition*, here `i < 100`. A condition is something that is true or false. In our case, we use the mathematical symbol < to check if a value is inferior to another one. Other symbol allow for different test (such as > for superior to, or == to test the equality. Not to be confused with = for affection, a classic mistake.)
 
-- Then you have the *update*, here (as often) an iteration over an index: `i = i + 1;`.
+* Then you have the *update*, here (as often) an iteration over an index: `i = i + 1;`.
 
-- Last,  you have the *block of code*, located between braces `{ }`, that is executed by the for loop.
+* Last,  you have the *block of code*, located between braces `{ }`, that is executed by the for loop.
 
 Try to use such for loop to draw lines as a batch. You can use many loops to draw complex batches of lines. Try it especially with not too high value of alpha. You might get surprised how well it renders on screen! For instance:
 
