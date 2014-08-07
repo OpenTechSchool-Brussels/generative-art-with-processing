@@ -7,13 +7,10 @@ num: 3
 Let’s up the level a bit more. Particle system were made possible with hardware being more and more powerful. You can simulate quite complex behavior (fire, smoke, liquids…) or just use them to have fun, which will be our case. It can be pretty process intensive (difficult for your computer to compute it quickly) so don’t start straight with a million particles!
 
 ##o) What is a particle system?##
-You’ll never guess. It’s a system with particles inside. Yep, as simple as that. Usually you don’t have one or two, but closer to hundreds or even more than millions in complex simulation. In a particle system, the emphasis is not on the individual particles, but on what they create as a whole. This is pretty fitting for Generative Art. You search particle system on youtube, you’ll find quite mesmerizing visualisation. And once you’ve done yours, don’t hesitate to upload it too :D
+You’ll never guess. It’s a system with particles inside. Particles are physical objects with a position, speed and acceleration. They can be represented as you see fit (would that be individual shape, trajectory or links between them) and can (or not) interact with each other. Usually you don’t have one or two, but closer to hundreds or even more than millions in complex simulation. In a particle system, the emphasis is not on the individual particles, but on what they create as a whole. This is pretty fitting for Generative Art. You search particle system on youtube, you’ll find quite mesmerizing visualisation. And once you’ve done yours, don’t hesitate to upload it too :D
 
-In this log, we will learn to generate many particles, and we will use as previously the same position/speed/acceleration model to create beautiful curvic movements. Once you have this system running, you can chose either to draw only the particles, or their trajectories as a whole.
-
-
-##a) From left to right##
-A position is more or less defined as we defined the dots that we used in previous log to define lines (position, speed and acceleration). The only difference is that they are not meant to stay on a line, so both x and y will be varying. We could separate both value in two variables, but there is one type specially meant for such kind of data: the vectors. The two commonest vectors are 2D vectors (x,y) and 3D vectors (x,y,z). We will only use 2D vectors. In Processing, the type for both vector is PVector. This way, to define a particle:
+##a) Spread and shine##
+If before we had dots moving alone a frame, with only `x` evolving, now we have the whole deal: `(x,y)`. While we could treat each information independently (at the cost of repeted code, implying more energy & time spent, and errors) we can see them as a whole, as a complexe variable, called an object. There are many kind of object, in our case, this one is called a `PVector` (P for processing, Vector for ... vector). As such, it defines a new type of variable. It can be used to store 2D or 3D data, in our case we'll only take care of 2D vectors. We hence define a particle:
 
 ```java
 PVector p,s,a; //not anymore x, but “p” for position.
