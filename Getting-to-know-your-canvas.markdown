@@ -39,18 +39,19 @@ So, now you know to draw, let release the full spectrum of your creation by addi
 
 You have three main way to apply color. First you can apply colors along the edge of your shape, second you can apply it inside the shape, or you can lastly apply it to the background.
 
-First let’s play with the background, easiest way to test out colors. In order to modify the background colors, just call `background(Red, Green, Blue);`. For instance for a Red background: `background(255,0,0);`. How would you create a black or a white background ?
+First let’s play with the background, easiest way to test out colors. In order to modify the background colors, just call `background(Red, Green, Blue);`. For instance for a Red background: `background(255,0,0);`. How would you create a black or a white background ? Hard enough to find the Red Green Blue values for clean colors, but what about ... teal? Lucky you, Processing put a color selector in the IDE. Just click in the menu on Tools, then Color Selector.
 
 Now let’s apply those colors to the shapes we created earlier. For that we have two functions, which are used in the same way: `stroke` and `fill`. Stroke define the color we will use from now for the edges of the primitives, and fill defines the color we’ll use for now for the inside of the primitives. We use it the same way as background, with the added parameters of transparency: `stroke(Red, Green, Blue, Alpha); fill(Red, Green, Blue, Alpha);`. In case you don’t want any stroke or any fill then you can call respectively `noStroke()` and `noFill()`. For instance: 
 
 ```java
-stroke(200,100,100,255);
+background(255, 0, 220);
+stroke(200, 100, 100, 255);
 fill(50, 10, 200, 40);
-rect(25,25,50,50);
-stroke(100,200,100,255);
-ellipse(70,70,40,40);
+rect(25, 25, 50, 50);
+stroke(100, 200, 100, 255);
+ellipse(70, 70, 40, 40);
 noFill();
-ellipse(70,25,20,20);
+ellipse(70, 25, 20, 20);
 ```
 Remember, if you want your shape to be totally seen, with no transparency, it means you want an alpha to be maximum (in our case, 255).
 
@@ -172,7 +173,7 @@ void keyPressed() {
 }
 ```
 
-You can decide to draw something here whenever a key is pressed, you can change a value (but for that we need variables, that we’ll see in next sections) or you can call other functions. One function that you can call, and that will be pretty useful to show other people what you did, is the `saveFrame(nameOfFile)` function. The name says it all: it save the frame as a picture in a file you decide the name of. For instance, if you want to save what is displayed on your Processing window each time you press a key:
+Whatever code you'll put there (drawing something, changing a color, calling other functions etc. etc.), it'll be executed when you press a key. Now of course, you'll want to have more precision in the selection of the key. That requires some stuff we'll see later on in the workshop (even more that the emphase here is more on generative art than interactive art, that last part will be for another workshop!). One function that you can call by the press of a button that will be pretty useful is the `saveFrame(nameOfFile)` function. The name says it all: it save the frame as a picture in a file you decide the name of. For instance, if you want to save what is displayed on your Processing window each time you press a key:
 
 ```java
 void keyPressed() {
@@ -188,14 +189,22 @@ Let's finish on a full course meal:
 void setup() {
   size(displayWidth, displayHeight);
   background(0, 0, 0);
+  noCursor();
+  noStroke();
 }
 
 void draw() {
 
   // Shadows are coming!
-  fill(0, 0, 0, mouseY/height * 255); // The alpha value depends on the position of the mouse
+  fill(0, 0, 0, 5); // Bahhh, Processing keep an ugly grey when alpha is too low :(
   rect(0,0,width, height);
+  
+  fill(random(255), random(255), random(255), random(255));
+  rect(mouseX + random(-20,20), mouseY + random(-20,20), random(2,5), random(2,5));
 
+  fill(random(255), random(255), random(255), random(255));
+  rect(mouseX + random(-20,20), mouseY + random(-20,20), random(2,5), random(2,5));
+  
 }
 
 void keyPressed() {
