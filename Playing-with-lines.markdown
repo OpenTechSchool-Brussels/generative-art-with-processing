@@ -93,25 +93,20 @@ x1 += v1;
 
 Get this behavior working for both dot, and you’ll be in for a beautiful surprise!
 
-But you’ll realise that a random acceleration means that things go out of hand (or screen in our case) pretty fast. Let’s … well, tweak randomness. Let us have an acceleration that goes toward the center when you’re far from it. For that, we need to define a value that is getting bigger the further your x value goes off the chart. The further the bigger the value. How do we do that?
+But you’ll realise that a random acceleration means that things go out of hand (or screen in our case) pretty fast. Let’s … well, tweak randomness. On top of that randomness, let us have an acceleration that goes toward the center when you’re far from it. For that, we need two things. A value that is positive on the left (so that you'll go toward the right, hence center) and negative on the right (hence toward the left, and the center). Secondly, we need a value that is low when close to the center (not much impact) and gets bigger when you're far from it (big impact).
 
-First we need to characterise the center. Your window is of length width so the center would be at x value width/2. Now, we need to compare our position to this center. A basic way to compare is to subtract both value, and look at the result. Is it big, small? Positive, negative? The acceleration for the first dot would then be:
+Lucky us, the position `x` seems to fit that almost perfectly. The more on the right, the higher the value, the more on the left, the higher the negative value. You already see that we have the opposite sign we want (on the left, position is negative, but we want a positive force), so let's use `-x`. Unfortunately, `-x` equals zero on the far left of the screen, not at the middle of the screen (which is `width/2`). We need to make a translation and hence use `width/2 - x`.
 
 ```java
 a1 = random(-1,1)    // the random part
    + (width/2 - x1);  // the “please come back to the center” part
 ```
 
-Wait what?! Is this thing working? Yes it is. As long as you finish your command with a ;, you can put your code on multiple line and hence organise it better. And you can even put comments in between! No you don’t have any reasons to have a dirty code.
-
-Now, believe it or not (if you run with the previous value), it’s working. But … we might give too much Gs to our points: the acceleration is too big. For instance, the random part is between -1 and 1, but your “please come back” part can grow bigger than 600 depending on your resolution! We need to divide this part so that the acceleration still make sense. Try to find a decent value (linked or not with width). On my side, I found 3000 to working quite fine:
+One last thing is needed now. When you used `random(-1,1)` for the acceleration, it worked well enough. Higher value meant a berserk acceleration. So values (negative or positive) that has a strenght of 1 seem to be good. What would be the strenght of `(width/2 - x1)`? Imagine your screen has a width of around 1000, if your line is at the edge, it means ... a value of acceleration of 500! Quite too much. You just entered by the front door the glorious world of parametre optimisation. We need to tweak the value to a better range. There is no perfect range, different ones will imply different behaviors. It's up for you to chose the one you want, for me 3000 worked well enough. 
 
 ```java
 a1 = random(-1,1) + (width/2 - x1)/3000;
 ```
-
-but different acceleration will give you different behavior, and hence different artistic results. Exploring those parameters, playing with the rule, that’s part of generating art.
-
 
 ##c) Series##
 Not only can you command your lines with randomness, but you can also command them as a serie. For that you will need a new kind of structure: the for loop:
