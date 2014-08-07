@@ -187,6 +187,7 @@ Unfortunately here the name is always the same. If you want save multiple frames
 Computing is all about automatisation. Drawing rectangles one by one is nice but sometimes you want to repeat one part of your code many time, only with slight variations (like ... based on a counter). You can either rewrite many times your code (not only a lenghty process, but an error prone one when you need to update it) or use a new structure: the for loop:
 
 ```java
+// Don't sweat too much over it, next paragraphes explain it all
 for(int i = 0; i < 100; i = i + 1) {
  rect( 10 + 40*i, 100, 10, 10);
 }
@@ -204,7 +205,17 @@ To be more precise, a for loop is defined by 4 components:
 
 * Last,  you have the *block of code*, located between braces `{ }`, that is executed by the for loop.
 
-Even better, you can nest loops! (Don't mess up the indexes on each loops!)
+Let's get back to our previous code:
+
+```java
+for(int i = 0; i < 100; i = i + 1) {
+ rect( 10 + 40*i, 100, 10, 10);
+}
+```
+
+The line drawing a rectangle will executed repeatedly with values of i from 1 to 99. Changing the value of i will change the offset of the x position (`rect( 10 + 40*i, ...`). We should hence see a serie of cube along the x axis.
+
+But wait, that's not all! You can even nest loops; don't mess up the indexes on each loops tho.
 
 ```java
 for(int i = 0; i < 100; i = i + 1) {
