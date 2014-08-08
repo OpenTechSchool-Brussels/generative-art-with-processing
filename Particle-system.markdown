@@ -33,6 +33,7 @@ void draw() {
   p1.y = p2.y + p3.y;
 
   // Method. Using them.
+  p1.set(42, 42); // Setting both values at the same time
   float distance = p3.mag(); // Return the mag of the PVector, its lenght
   p1.random2D(); // Set p1 as a random 2D vector with a unitary lenght (p3.mag() == 0)
   
@@ -49,11 +50,11 @@ If you want to learn more about PVector methods, you can check their Processing 
 
 
 ##b) Spread and shine##
-Let’s look back at the code we wrote in the previous log (i.e.dealing with line, array of variables and random acceleration) and apply it to particles. Try to do it by yourself, or at least to think a bit how you would do that. The following code is one way to do so, in which the particles start from the left, and go toward the right:
+Let’s look back at the code we wrote in the previous log (i.e. dealing with line, array of variables and random acceleration) and apply it to particles. Try to do it by yourself, or at least to think a bit how you would do that with your new skills. The following code is one way to do so, in which the particles start from the center and evolve toward the exterior of the screen:
 
 ```java	
-PVector[] p, s, a; //Defines the particles
-int k; // Define the number of particles
+PVector[] p, s, a; //The particles position, speed and acceleration
+int k; // The number of particles
 
 void setup() {
   size(displayWidth, displayHeight);
@@ -61,18 +62,15 @@ void setup() {
   noCursor();
   k = 20; // We want 20 of them apples
  
-  // Define the size of the particle array by the number 
-  // / of particle we want
+  // Particle array size is the number of particles we want
   p = new PVector[k];
   s = new PVector[k];
   a = new PVector[k];
  
-  // Initialise the acceleration, speed and position arrays.
+  // Initialise the accelerations, speeds and positions.
   for(int i=0; i<k; i++) {
-    // Initial position at the left of the screen, with random y
-    // To initialise a PVector, we use PVector(x,y)  with values for x and y
-    p[i] = new PVector(10,random(height));
-    s[i] = new PVector(3,0); // Initial speed toward the right
+    p[i] = new PVector(width/2, height/2); // Center screen
+    s[i] = new PVector(0,0);
     a[i] = new PVector(0,0);
   }
 }
@@ -81,71 +79,122 @@ void setup() {
 void draw() {
   //Update acceleration, speed and position 
   for(int i=0; i<k; i++) { 
-    a[i] = new PVector(random(0.01)-0.005, random(0.2)-0.1);
-    s[i].add(a[i]); // You can’t add vectors together with +
-    p[i].add(s[i]); // / to do so, you need to call add.
+    a[i] = new PVector(random(-0.1,0.1), random(-0.1,0.1));
+    s[i].add(a[i]);
+    p[i].add(s[i]);
   }
       
   // Draw the particles
   stroke(255);
   for(int i=0; i<k; i++) { 
-      point(p[i].x, p[i].y); // Here we use the point primitive
+      point(p[i].x, p[i].y); // Here we use the point visual primitive
   }
 }
 ```
 
-In this case, we decided that the particles would go from left to right. You’re not bound to that, you can make them appear anywhere, and move in any direction. From top to bottom while others go from right to left, or even from the center to the exterior. 
-
-But ... we have a little issue here. At some point, our particles will go of the screen. We need a way to give them back some initial position. So, in short it would be: “if you are too much on the right, then you should go back on the left”. There is a keyword that allow you to do so in Processing (and many other languages) it’s if:
-
-```java
-if( p[i].x > width) { // if the particles are too far on the right
-        //Initialise them anew
-    p[i] = new PVector(10,random(height));
-    s[i] = new PVector(3,0); // Initial speed toward the right
-    a[i] = new PVector(0,0);
-};
-```
-
-If the condition defines under the parenthesis is right (meaning: equals to true) then we will execute the block of code defined between the braces (the initialisation). We need to have this code working for each particles, so add it up inside the for loop before or after updating the variables.
+Soooooo pretty. Try with many many particules and ... of course, transparency :D
 
 
-##b) Of mice and planets IN PROGRESS##
-From now, it’s still “experimental”, hopefully everything works, don’t hesitate to call us if it doesn’t.
-
-Until now, the acceleration was random. Let’s put an end to that (more or less…).
-In this part, we will make the particle attracted to the mouse cursor.
-
-How do you define a force?
-It’s defined by a direction (defined by the point of origin of our force -the mouse- and where it’s applied -the particle), and a value. In our case, the closer the particle is to your mouse, the stronger it is.
-You can try other stuff (like the exact opposite to not have a force of attraction, but of repulsion).
-
-In this case, the acceleration is defined by the following lines:
+##c) Of mice and planets##
+Soooo pretty, but soooo off the screen. We have the same issue han previously with our lines. And guess what? We'll solve it the same way! Only difference is that now we're in 2D so what we did on `x` as a float, we'll do on `(x,y)` as a PVector. This time, let's make the particule attracted by the mouse cursor so that we can play with it. Don't hesitate to put other positions (such as the center of the screen, as we did for the lines).
 
 ```java
-PVector force = new PVector();
-
-    // 1) Get the direction
-    force.set( p[i].x - mouseX, p[i].y - mouseY);
-
-    // 2) Get the right value
-    //Right now, the further you are, the bigger is the force, we need to invert that.
-    // 2.1) Measure the magnitude of the force vector
-    float strength = force.mag();    
-    a[i].div(strength + strength*strength); // Divide the vector by a value
-    a[i].div(-1); // Inverse the vector (to get an attraction vector)
+  // A full line, but take your time and you'll understand it.
+  // So full that it was break on two lines for better readability
+  a[i].set( random(-0.1,0.1) + (width/2 - p[i].x)/9000,
+            random(-0.1,0.1) + (height/2 - p[i].y)/9000);
 ```
-
-If replace our previous rules on acceleration with this one, you should find that our particles are now attracted by the mouse! Move around to test for some neat rendering! And for the astres aficionados try to catch the particles and make them act like comets graviting along your mouse!
-
-Explore:
+In this log, we discover new graphic directions and keep it simple. It doesn't mean that you have to keep it simple too,you can & should explore, for instance you can try:
 - Color varying with speed
-- try batch with similar speed, similar color. Use many batch, different between batches
-- Try to only plot the particles, for instance as rectangle with low transparency.
-- Try to not anymore use the mouse as point of attraction but predefined positions, acting as planet. Bonus if you draw the planets.
+- Batch of particules with similar speed, similar color. Launch at the same time different batches.
+- Try to only plot the particles (not their trajectories, by using `background(0);` at the beginning of draw). Give them another graphic primitive (`ellipse(p[i].x, p[i].y,5,5);`). Set it up nice `noStroke(); fill(255,10);`. And try with many many particules!
+- Try to not anymore use the mouse as point of attraction but predefined positions, acting as planets. Bonus points if you draw the planets.
+- And many many others...
     
+##e) Connect and reject##
+One possible exploration was so nice people lobbied to have it included. We can display the particules ... but we can also display their connexions, and that's awesome. For once we won't touch the update part of the code, but the display. We used to draw as:
 
-##d) Laws of attraction IN PROGRESS##
+```java
+  // Draw the particles
+  stroke(255);
+  for(int i=0; i<k; i++) { 
+      point(p[i].x, p[i].y); // Here we use the point visual primitive
+  }
+```
+
+Now, we'll just draw the particles as ellipse, and lines between each of them. In order to draw the lines, we'll need to go through the particles array twice nested, once for the particle at one end of the line, once for the particule at the other end of the line. For the most acute, you'll see we made a little redundancy in the code below for simplification purpose. (Oh, and don't push up too high the number of particles...)
+
+```java
+  background(0);
+  
+  // Draw the particles
+  noStroke();
+  for(int i=0; i<k; i++) { 
+      fill(255);
+      ellipse(p[i].x, p[i].y, 5, 5);
+      fill(255,30);
+      ellipse(p[i].x, p[i].y, 30, 30);
+  }
+  
+  //Draw the links
+  stroke(200);
+  for(int i=0; i<k; i++) {
+    for(int j=0; j<k; j++) { 
+      line(p[i].x, p[i].y, p[j].x, p[j].y);
+    }
+  }
+```
+
+That's nice but ... the lines make it feels more mathematic than organic. Let's not always display the lines, let's do that only if particules are close enough. Ahhh at last, the ultimate computer keyword, summing up all that is a computer : `if`. Tests. And actions that follows depending on the answer, that's the basic of computing, it was high time we got there!
+
+An `if` structure allow you to make decisions. At its most complete it is seperated in three parts. If it's rainning (condition) I'm staying in (action to do if condition is true) else I'm leaving (action to do if condition is false). In code you have it this way:
+
+```java
+ if(age < 18) { // Forbiden to enter
+ 
+    fill(255,0,0);
+ 
+ } else { // Free to enter
+ 
+    fill(0,255,0);
+    
+ }
+ 
+ ellipse(width/2, height/2, 100, 100);
+ 
+```
+
+In our case, we want to draw the line only if the particles are close enough. Let's just make a test before calling the line function. Remember from previous code that the lenght of a `PVector` is accessed by its `mag` method.
+
+```java
+
+  background(0);
+  
+  // Draw the particles
+  noStroke();
+  for(int i=0; i<k; i++) { 
+      fill(255);
+      ellipse(p[i].x, p[i].y, 5, 5);
+      fill(255,30);
+      ellipse(p[i].x, p[i].y, 30, 30);
+  }
+  
+  //Draw the links
+  stroke(200);
+  for(int i=0; i<k; i++) {
+    for(int j=0; j<k; j++) { 
+    
+      PVector diffPos = p[i].get(); // the get method return a copy of the vector
+      diffPos.sub(p[j]);
+      if(diffPos.mag() < 50) {
+        line(p[i].x, p[i].y, p[j].x, p[j].y);
+      } // We do nothing if condition is not met, so no need for the "else" part
+      
+    }
+  }
+```
+
+##e) Laws of attraction##
 Let’s change the acceleration rule. This time the particles are not attracted to the mouse anymore. They are attracted to each other. So basically, for each particle, you need to apply the calculus we did to the mouse, but for other particles.
 
 Try to find out by yourself how it could be made possible, and if you want so clue, this is one possible solution:
