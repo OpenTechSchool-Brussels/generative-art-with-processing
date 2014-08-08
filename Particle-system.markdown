@@ -178,28 +178,21 @@ In our case, we want to draw the line only if the particles are close enough. Le
 ```
 
 ##e) Laws of attraction##
-Let’s change the acceleration rule. This time the particles are not attracted to the mouse anymore. They are attracted to each other. So basically, for each particle, you need to apply the calculus we did to the mouse, but for other particles.
+Enough already with the particles!! .... One last thing? Ok, one last. This time let's focus on the update part, the behavior of the particles. Up to know, they were attracted to the mouse cursor or to static positions. A particle really gets neat when particules interact with each other. We had that with graphism (the lines). Now we'll have it in their behavior by making them attracted by each other. In short, for each particle, you need to apply the calculus we did to with the mouse position, but now to all the other particules' position. Some for loop in the making...
 
-Try to find out by yourself how it could be made possible, and if you want so clue, this is one possible solution:
-
+Try to imagine or even code it yourself. But if you're curious, here is one possible solution (you'll see that in it, we separated the update loop in two. One part specially for the acceleration update, and then for both the speed and position).
 
 ```java
-//Updating the acceleration for all particles (so don’t put that inside
-// / the loop that updates speed and position also)
+//Updating the acceleration for all particles
   PVector tA = new PVector();
   for(int i=0; i<k; i++) {
-     a[i].set(0,0);
-     for(int j=0; j<k; j++) {
-        if(j==i) { // A particle can’t interact with itself
-           continue;  // do nothing, continue to the next 
-    // / iteration of the for loop
-      }
-    //get the direction
-    tA.set( p[i].x - p[j].x, p[i].y - p[j].y);
-    //inverse the power
-    tA.div(tA.mag() + tA.mag()*tA.mag());
-    a[i].add(tA);
-  }
+    a[i].set(0,0);
+    or(int j=0; j<k; j++) {
+      tA.set( random(-0.1,0.1) + (p[j].x - p[i].x)/15000,
+              random(-0.1,0.1) + (p[j].y - p[i].y)/15000);
+      a[i].add(tA);
+          
+    }
   a[i].div(-1);
   }
 
@@ -209,8 +202,6 @@ for(int i=0; i<k; i++) {
     p[i].add(s[i]);
 }
 
-//Draw
-//As usual..
 ```
 
 
