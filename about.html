@@ -9,13 +9,16 @@ This course was realised in the context of the serie of free workshops <a href="
 <p>
 
 {% for author in site.data.authors %}
-    <span class="authorName">{{ author.firstname }} {{ author.lastname }}</span>: {{ author.bio }}
-    <br/>
-    Email: <a href="mailto:{{ author.email }}">{{ author.email }}</a> <br/>
-    Website: <a href="{{ author.website }}">{{ author.website }}</a>
-    {% unless forloop.last %}
+    <p class="memberText">
+        <div class="memberImage"><img alt="{{ author.firstname }}" src="{{ site.baseurl }}/assets/images/{{ author.firstname }}.jpg" /></div>
+        <span id="{{ author.firstname }}" class="authorName">{{ author.firstname }} {{ author.lastname }}</span>: {{ author.bio }}
+        <br/>
+        Email: <a href="mailto:{{ author.email }}">{{ author.email }}</a> <br/>
+        Website: <a href="{{ author.website }}">{{ author.website }}</a>
+        {% unless forloop.last %}
     </p>
-    <p>   
+    <center><hr width="60%"/></center>
+    <br/>
     {% endunless %}
 {% endfor %}
 </p>
