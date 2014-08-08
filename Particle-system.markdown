@@ -162,18 +162,6 @@ An `if` structure allow you to make decisions. At its most complete it is sepera
 In our case, we want to draw the line only if the particles are close enough. Let's just make a test before calling the line function. Remember from previous code that the lenght of a `PVector` is accessed by its `mag` method.
 
 ```java
-
-  background(0);
-  
-  // Draw the particles
-  noStroke();
-  for(int i=0; i<k; i++) { 
-      fill(255);
-      ellipse(p[i].x, p[i].y, 5, 5);
-      fill(255,30);
-      ellipse(p[i].x, p[i].y, 30, 30);
-  }
-  
   //Draw the links
   stroke(200);
   for(int i=0; i<k; i++) {
