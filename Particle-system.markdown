@@ -151,17 +151,12 @@ An `if` structure allow you to make decisions. At its most complete it is sepera
 
 ```java
  if(age < 18) { // Forbiden to enter
- 
     fill(255,0,0);
- 
  } else { // Free to enter
- 
     fill(0,255,0);
-    
  }
  
  ellipse(width/2, height/2, 100, 100);
- 
 ```
 
 In our case, we want to draw the line only if the particles are close enough. Let's just make a test before calling the line function. Remember from previous code that the lenght of a `PVector` is accessed by its `mag` method.
