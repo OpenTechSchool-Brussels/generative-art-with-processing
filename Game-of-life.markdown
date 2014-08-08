@@ -4,30 +4,23 @@ title:  "The Game of Life"
 num: 4
 ---
 
-The material happened to be already super long, so we didn’t want to add that part. So it’s completely unsafe. Flee! This sectin will hopefuly be updated for *next* time we have the processing workshop.
-Still here? Well, you can dwell around and see if you find something of use.
+The material happened to be already super long, so we didn’t want to add that part. It’s completely unsafe. Flee! This section might be updated for *next* time we have the processing workshop. Or might be killed all together. Not sure if it's worth to be added. A little too complexe, not graphic enough. The Game of Life is a fascinating topic, not sure it fit the Generative Art topic well tho (at least not as how explored along the previous logs). Anyhow, here it is.
 
+##o) Cellular automaton: life on your computer##
+Gets its inspiration from life. An automaton, governing over the evolution of simple cells with basic rules. Mythical simulation, people think new life form could emerge from it. Other think it’s the rule that govern our world on a lower scale. The basic rule is:
 
-4) There is only one game: the game of life
-    o) Cellular automaton: life on your computer
-    a) Setting up our new world
-    b) Life & death
-c) Granting the cells an identity
+    Rule1: you live if you have at least N1 neighboors on the grid you die if you have at most N2 or at least N3 neighboors on the grid.
 
-    o) Cellular automaton: life on your computer
-Inspiration from life.
-Automaton.
-Mythical simulation, people think new life form could emerge from it. Other think it’s the rule that govern our world on a lower scale.
+What we add is:
+    
+    Rule2: You average the colors of your neighbours
 
-    Rule1: you live if you have at least … you die if you have at most or at least…
-our twist
-Rule2: You average the colors of your neighbours
-You feed it with sometimes random colors.
+##a) Setting up our new world##
 
-Explore: Try to change the rule to see the results.
+```java
 
-a) Setting up our new world
-    Array
+// MAAAAA code doesn't compile. It's past 2 am, and we told you it was unsafe so ... I'll let it be.
+
 int[][] GofL;
 float l, h;
 void setup() {
@@ -66,13 +59,18 @@ void draw() {
     }
   }
 }
+```
 
-    b) Life & death
+##b) Life & death##
 
 Explore: Try to make coherent sharing on the edges too.
 
-c) Granting the cells an identity
-we need to keep the color value some place : using the color variable.
+##c) Granting the cells an identity##
+We need to keep the color value some place.
+
+```java
+
+// Can't imagine why this code would compile more. Let's call that inspiration and let it rest. As I should be doing to.
 
 int[][] GofLRed;
 int[][] GofLGreen;
@@ -140,5 +138,5 @@ void draw() {
     }
   }
 }
-
+```
 
