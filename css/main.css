@@ -144,6 +144,26 @@ ul, ol {
   width: 69%; //Change that to have something more reactive...
 }
 
+.memberImage img {
+  float: left;
+  width:  130px;
+  height: 130px;
+  -webkit-border-radius: 150px;
+  -moz-border-radius: 150px;
+  -ms-border-radius: 150px;
+  -o-border-radius: 150px;
+  border-radius: 150px;
+
+  margin-right: 20px;
+}
+
+.memberTest {
+  float: right;
+  font-weight: bold;
+
+}
+
+
 //---------------------------------------
 //Trying to add line numbering :
 //---------------------------------------
