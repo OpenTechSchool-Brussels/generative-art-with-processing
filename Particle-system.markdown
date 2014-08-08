@@ -186,14 +186,14 @@ Try to imagine or even code it yourself. But if you're curious, here is one poss
 //Updating the acceleration for all particles
   PVector tA = new PVector();
   for(int i=0; i<k; i++) {
+  
     a[i].set(0,0);
-    or(int j=0; j<k; j++) {
+    
+    for(int j=0; j<k; j++) {
       tA.set( random(-0.1,0.1) + (p[j].x - p[i].x)/15000,
               random(-0.1,0.1) + (p[j].y - p[i].y)/15000);
       a[i].add(tA);
-          
     }
-  a[i].div(-1);
   }
 
 //Updating position and speed
