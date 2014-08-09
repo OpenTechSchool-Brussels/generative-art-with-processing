@@ -126,15 +126,19 @@ When you want to access or modify the value of each element of an array, you cou
 
 ```java
 // Declare the variable/array at root for it to be used globaly (i.e. always remembered)
-float[] arrayOfFloats = new float[10]; // Defines an array of floats, of size 10.
+float[] arrayOfPositions = new float[10]; // Defines an array of floats, of size 10.
 
 void setup() {
+  size(displayWidth, displayHeight);
+  background(0);
+  stroke(255,10);
+  
   //Define it in setup
-  arrayOfFloats = new float[10];
+  arrayOfPositions = new float[10];
   
   //Initialise it in setup
   for(int i=0; i<10; i+=1) {
-    arrayOfFloats[i] = 0;
+    arrayOfPositions[i] = 0;
   }
   
 }
@@ -143,8 +147,15 @@ void draw() {
 
   //Use it in draw
   for(int i=0; i<10; i+=1) {
-    arrayOfFloats[i] += random();
-    
+    arrayOfPositions[i] += random(10);
+  }
+  
+  //And display
+  
+  for(int i=0; i<10; i+=1) {
+    line(arrayOfPositions[i], 0, arrayOfPositions[i], height);
+  }
+  
 } 
 ```
 
