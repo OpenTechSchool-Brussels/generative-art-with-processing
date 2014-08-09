@@ -108,45 +108,8 @@ One last thing is needed now. When you used `random(-1,1)` for the acceleration,
 a1 = random(-1,1) + (width/2 - x1)/3000;
 ```
 
-##c) Series##
-Not only can you command your lines with randomness, but you can also command them as a serie. For that you will need a new kind of structure: the for loop:
-
-```java
-for(int i = 0; i < 100; i += 1) {
-    line( 10 + i, 100, 10, 500);
-}
-```
-
-So, what is such block of code doing? A for loop will repeat a block of code until a condition is met. It can be understood in english as: "First do something (the initialisation). Then repeatedly execute code (the block of code) until I decide you’re finished (the condition). Each time you have finished executing the code between braces, do one thing in particular (usually an iteration over a counter)".
-
-To be more precise, a for loop is defined by 4 components:
-
-* First the *initialisation*, here `int i = 0;`. We define and instantiate here a new variable. Not a float, but an integer. We saw this type earlier with relation to colors. An integer is defined by its type: int, it is a variable with no fractional part, no numbers after the coma.
-
-* Then you have the *condition*, here `i < 100`. A condition is something that is true or false. In our case, we use the mathematical symbol < to check if a value is inferior to another one. Other symbol allow for different test (such as > for superior to, or == to test the equality. Not to be confused with = for affection, a classic mistake.)
-
-* Then you have the *update*, here (as often) an iteration over an index: `i = i + 1;`.
-
-* Last,  you have the *block of code*, located between braces `{ }`, that is executed by the for loop.
-
-Try to use such for loop to draw lines as a batch. You can use many loops to draw complex batches of lines. Try it especially with not too high value of alpha. You might get surprised how well it renders on screen! For instance:
-
-```java 
-size(displayWidth, displayHeight);
-background(0); //When you have three time the same value for the color, you can write it only once
-stroke(255, 255, 255, 10);
-
-for(int i=0; i<100; i = i+1) {
-    line( width/2 + i*2, 100, width/2 - i*1, 500);
-}
-       
-for(int i=0; i<100; i = i+1) {
-    line( width/2 + 30 + i*0.4, 100, width/2 +50 - i*1, 500);
-}
-```
-
 ##d) Handling multiple Lines##
-Good, we have multiple lines. But they are static! Not like the one we had before, with the gorgeous movement! In the for loop, the lines didn’t have a behavior, they were merely plotted. If we want to have multiple lines with behaviors, we need many variables. We could define a heck load of them (x1_0, x1_1, x1_2 ...) but that’s not really the way to do it. Programming is all about simplifying, automating and organising. When we need to store multiple variable, the commonest data structure is the array.
+If you used loops as for rectangles, we'd have multiple lines. But they'd be static! Not like the one we had before, with the gorgeous movement! In the for loop, the lines wouldn’t have a behavior, they would be merely plotted. If we want to have multiple lines with behaviors, we need many variables. We could define a heck load of them (x1_0, x1_1, x1_2 ...) but that’s not really the way to do it. Programming is all about simplifying, automating and organising. When we need to store multiple variable, the commonest data structure is the array.
 
 An array is just a list of variables, indexed over a integer. If you define an array of ten elements, you can ask it to give you its fifth element:
 
