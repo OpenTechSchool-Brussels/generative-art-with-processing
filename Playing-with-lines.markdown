@@ -108,7 +108,7 @@ One last thing is needed now. When you used `random(-1,1)` for the acceleration,
 a1 = random(-1,1) + (width/2 - x1)/3000;
 ```
 
-##d) Handling multiple Lines##
+##c) Handling multiple Lines##
 If you used loops as for rectangles, we'd have multiple lines. But they'd be static! Not like the one we had before, with the gorgeous movement! In the for loop, the lines wouldn’t have a behavior, they would be merely plotted. If we want to have multiple lines with behaviors, we need many variables. We could define a heck load of them (x1_0, x1_1, x1_2 ...) but that’s not really the way to do it. Programming is all about simplifying, automating and organising. When we need to store multiple variable, the commonest data structure is the array.
 
 An array is just a list of variables, indexed over a integer. If you define an array of ten elements, you can ask it to give you its fifth element:
