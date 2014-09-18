@@ -180,28 +180,32 @@ In our case, we want to draw the line only if the particles are close enough. Le
 ##e) Laws of attraction##
 Enough already with the particles!! .... One last thing? Ok, one last. This time let's focus on the update part, the behavior of the particles. Up to know, they were attracted to the mouse cursor or to static positions. A particle really gets neat when particules interact with each other. We had that with graphism (the lines). Now we'll have it in their behavior by making them attracted by each other. In short, for each particle, you need to apply the calculus we did to with the mouse position, but now to all the other particules' position. Some for loop in the making...
 
-Try to imagine or even code it yourself. But if you're curious, here is one possible solution (you'll see that in it, we separated the update loop in two. One part specially for the acceleration update, and then for both the speed and position).
+Try to imagine or even code it yourself. But if you're curious, here is one possible solution (you'll see that in it, we separated the update loop in two. One part specially for the acceleration update, and then for both the speed and position). Here, getting the right acceleration is a more complex process, so we start from zero, and add up until we have the right value. Up to you to check back the parameters and see which are the most fit.
 
 ```java
-//Updating the acceleration for all particles
-  PVector tA = new PVector();
+  //Updating acceleration
   for(int i=0; i<k; i++) {
-  
+    // Initialisation at zero
     a[i].set(0,0);
     
+    // Force between particules
     for(int j=0; j<k; j++) {
-      tA.set( random(-0.1,0.1) + (p[j].x - p[i].x)/15000,
-              random(-0.1,0.1) + (p[j].y - p[i].y)/15000);
-      a[i].add(tA);
+      a[i].add( new PVector( (p[j].x - p[i].x)/15000, (p[j].y - p[i].y)/15000) );
     }
+
+    // Random force
+    a[i].add( new PVector( random(-0.1,0.1), random(-0.1,0.1) ) );
+
+    // Force that pulls you toward the center
+    a[i].add( new PVector( (width/2 - p[i].x)/9000, (height/2 - p[i].y)/9000 ) );
   }
 
-//Updating position and speed
-for(int i=0; i<k; i++) { 
+  //Updating position and speed
+  for(int i=0; i<k; i++) { 
     s[i].add(a[i]);
     p[i].add(s[i]);
-}
+  }
 
 ```
 
-
+Ok, time to tell you the truth... It's not working like that in the solar system, or any mass based system... All the forces we applied were following one pattern: the further you were, the stronger you were pulled back. It's not the case with planets. It's more like the opposite. The closer they are, the stronger they are pulled together. For now I'll let you that as an exercise!
