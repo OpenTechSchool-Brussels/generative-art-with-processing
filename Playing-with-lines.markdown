@@ -114,8 +114,11 @@ If you used loops as for rectangles, we'd have multiple lines. But they'd be sta
 An array is just a list of variables, indexed over a integer. If you define an array of ten elements, you can ask it to give you its fifth element:
 
 ```java
-    float[] arrayOfFloats = new float[10]; // Defines an arry of floats, of size 10.
+    float[] ArrayOfFloats = new float[10]; // Defines an array of floats, of size 10.
     float rez = ArrayOfFloats[4]; // Access to the fifth value.
+    ArrayOfFloats[5] = 4; // Modify one of its value.
+    int size = ArrayOfFloats.length; // Size of the array
+
 ```
 
 No, there was no mistake in the writing (not this time at least), the arrays index start at 0, not 1. So if you call `arrayOfFloats[1]`, you will not get the first element, but the second. This is why to call the fifth value, we need `arrayOfFloats[4]`.
