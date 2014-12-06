@@ -37,7 +37,7 @@ Even if basic, you’ve learn a few tools that allow you to express yourself. Wh
 ##b) Colors##
 So, now you know to draw, let release the full spectrum of your creation by adding colors! Processing allow you many way to play with colors but we’ll settle with the basic one: the classic separation of color in four components: Red, Green & Blue (or RGB), over which we’ll add transparency (or alpha). Each component is an integer (a number with no value after the comma,  no fraction part, no decimals; such as 0, 3, 34 or -20) between 0 and 255. In processing, the type that is linked with integer is called `int`. We will learn more about it later.
 
-You have three main way to apply color. First you can apply colors along the edge of your shape, second you can apply it inside the shape, or you can lastly apply it to the background.
+You have three main ways to apply color. First you can apply colors along the edge of your shape, second you can apply it inside the shape, or you can lastly apply it to the background.
 
 First let’s play with the background, easiest way to test out colors. In order to modify the background colors, just call `background(Red, Green, Blue);`. For instance for a Red background: `background(255,0,0);`. How would you create a black or a white background ? Hard enough to find the Red Green Blue values for clean colors, but what about ... teal? Lucky you, Processing put a color selector in the IDE. Just click in the menu on Tools, then Color Selector.
 
