@@ -96,13 +96,13 @@ Soooooo pretty. Try with many many particules and ... of course, transparency :D
 
 
 ##c) Of mice and planets##
-Soooo pretty, but soooo off the screen. We have the same issue han previously with our lines. And guess what? We'll solve it the same way! Only difference is that now we're in 2D so what we did on `x` as a float, we'll do on `(x,y)` as a PVector. This time, let's make the particule attracted by the mouse cursor so that we can play with it. Don't hesitate to put other positions (such as the center of the screen, as we did for the lines).
+Soooo pretty, but soooo off the screen. We have the same issue than previously with our lines. And guess what? We'll solve it the same way! Only difference is that now we're in 2D so what we did on `x` as a float, we'll do on `(x,y)` as a PVector. This time, let's make the particules attracted by the mouse cursor so that we can play with it. Don't hesitate to put other positions (such as the center of the screen, as we did for the lines).
 
 ```java
   // A full line, but take your time and you'll understand it.
   // So full that it was break on two lines for better readability
-  a[i].set( random(-0.1,0.1) + (width/2 - p[i].x)/9000,
-            random(-0.1,0.1) + (height/2 - p[i].y)/9000);
+  a[i].set( random(-0.1,0.1) + (width/2 - mouseX)/9000,
+            random(-0.1,0.1) + (height/2 - mouseY)/9000);
 ```
 In this log, we discover new graphic directions and keep it simple. It doesn't mean that you have to keep it simple too,you can & should explore, for instance you can try:
 - Color varying with speed
