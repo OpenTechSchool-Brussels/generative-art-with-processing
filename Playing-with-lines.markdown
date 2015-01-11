@@ -135,30 +135,30 @@ void setup() {
   size(displayWidth, displayHeight);
   background(0);
   stroke(255,10);
-  
+
   //Define it in setup
   arrayOfPositions = new float[10];
-  
+
   //Initialise it in setup
   for(int i=0; i<10; i+=1) {
-    arrayOfPositions[i] = 0;
+    arrayOfPositions[i] = width/4;
   }
-  
+
 }
 
-void draw() {
+void draw() {  
 
   //Use it in draw
   for(int i=0; i<10; i+=1) {
-    arrayOfPositions[i] += random(10);
+    arrayOfPositions[i] += random(-8, 10);
   }
-  
+
   //And display
-  
+
   for(int i=0; i<10; i+=1) {
     line(arrayOfPositions[i], 0, arrayOfPositions[i], height);
   }
-  
+
 } 
 ```
 
