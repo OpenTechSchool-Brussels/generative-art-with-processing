@@ -129,7 +129,7 @@ When you want to access or modify the value of each element of an array, you cou
 
 ```java
 // Declare the variable/array at root for it to be used globaly (i.e. always remembered)
-float[] arrayOfPositions = new float[10]; // Defines an array of floats, of size 10.
+float[] arrayOfPositions; // Defines an array of floats, of size 10.
 
 void setup() {
   size(displayWidth, displayHeight);
