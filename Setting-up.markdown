@@ -38,10 +38,7 @@ One of the classic first programs one writes is called “hello world”, which 
 rect(25,25,50,50);    
 ```
 
-What did it do? If you run that (pressing the icon, “run” in the menu or with your keyboard shortcut), you should see your canvas, with a square in the middle. Kudos, you’re an digital artist! All the next steps are just details. But before you leave full of pride, let's analyze this line.
-
-What you called is a function, and you fed it with parameters, four to be precise. The function is rect and you feed it with parameters in between parenthesis, separated by a comma. So if the function had no parameters, it should be written as `rect()`. You can try to run such a function, Processing will shout at you (gently, but in red) telling you that no, you can’t do that in this house, and that rect is patiently waiting for four parameters. At the end of the line lie a quiet `;`. Its function is to say that this particular command has finished. A common mistake is to forget to put it at the end of commands.
-
+What did it do? If you run that (pressing the icon, “run” in the menu or with your keyboard shortcut), you should see your canvas, with a square in the middle. Kudos, you’re an digital artist! All the next steps are just details. But don't you leave full of pride, we'll get to analyze and understand this line in the next chapter. Afterall, while creating great stuff along the way, the emphasis is on understanding how you make them, so that you can create your own stuff later.
 
 ##c) Generative Art##
 Generative art refers to art that in whole or in part has been created with the use of an autonomous system. Classic systems can be summed up as a brain and its input/output. For a system that generate art, it means that first the system needs to be fed some information. It needs rules governing the evolution of this input. Last, it has to represent what has been generated.
