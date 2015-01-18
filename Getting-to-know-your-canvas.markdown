@@ -14,7 +14,10 @@ It’ll all make sense (or at least a bit more) when you’ll start drawing shap
 
 ##a) Drawing primitives##
 Yes it is. In computer graphics, the basic items that you can draw are called primitives. They range from the basic (dots, lines, rectangles) to the complexe (cubes, spheres) to the esoteric (tea pot, monkeys… depending on the software/language you’re using).
-In our case, we’ll focus with simple ones: mainly dots, lines & rectangles. If you remember, you already know how to draw a rectangle: `rect(25,25,50,50);`. Now, what could mean these parameters? One way to find out, which will work in all case is to explore. Change the value, and see what happens. You’ll discover that you’re feeding the function with the position of the rectangle, and its height and width following : `rect(xPosition,yPosition,width,height);`. If you can’t remember if first come width or height, it’s easy, it’s always the x (horizontal) related information that comes first. Note that the position of the rectangle doesn’t define its center, but it’s upper left corner. That’s life. (Actually some tweaking allow you to change that, but that’ll be for another lesson.)
+
+In our case, we’ll focus with simple ones: mainly dots, lines & rectangles. If you remember, you already know how to draw a rectangle: `rect(25,25,50,50);`. This is what is called a function. A function is defined by its name (here `rect`), what it does (lines of code, here not explicited), its parameteres (the numbers you wrote in between parenthesis) and sometimes too what it returns (for instace, a fuction that adds two numbers would return a number). This part is very important since it is a basic block of programing, so don't hesitate to read it twicera to be sure you understand. Note that at the end of the line lie a quiet `;`. Its function is to say that this particular command has finished. A common mistake is to forget to put it at the end of commands. You will see that when describing the functions, we put names instead of the parametres in order to understand what is there function. It's up to you to replace them with the numbers you want.
+
+Now, what could mean these parameters? One way to find out, which will work in all case is to explore. Change the value, and see what happens. You’ll discover that you’re feeding the function with the position of the rectangle, and its height and width following : `rect(xPosition,yPosition,width,height);`. If you can’t remember if first come width or height, it’s easy, it’s always the x (horizontal) related information that comes first. Note that the position of the rectangle doesn’t define its center, but it’s upper left corner. That’s life. (Actually some tweaking allow you to change that, but that’ll be for another lesson.)
 
 You have other functions for other primitives, such as `point(xPosition, yPosition);` that allows you to draw a dot a precise position on screen. A segment is a line that links two dots, implying that you need to give two positions on screen: `line(xPos1, yPos1, xPos2, yPos2);`. If you want to draw an ellipse, you can, by specifying its position and how large and tall it is: `ellipse(xPos, yPos, width, height);`. Note that here the position defines the center of the ellipse, not it upside left corner. Can you imagine how you can draw a circle using this function? (same than drawing a square from the rect function).
 
@@ -84,10 +87,9 @@ lines */
 ##d) Your first superpower: Randomness##
 Now things are getting serious. Random seems at first … well, random, but there is way much more to it. Lucky you, random is awesome. Or should I say, it’s seen as awesome. What makes Generative Art more or less like a legal LSD is that the human brain is wired to search and find patterns (like when you look at clouds). So when you will show chaos, non organise mess, the brain will try to make sense of it and the spectator will see patterns. Call that co-creation. Yep, that’s fascinating.
 
-In Processing, the basic function for randomness is the lengthy but well named `random()` function. Calling the random function will return you a floating number. A `float` is a number with a fraction part, such as 1.34, 10.567 or -13.00. You can call it in three different ways:
+In Processing, the basic function for randomness is the lengthy but well named `random(max)` function. Calling the random function will return you a floating number. A `float` is a number with a fraction part, such as 1.34, 10.567 or -13.00. You can call it in three different ways:
 
 ```java
-random(); // returns a float between 0 and 1
 random(max); // returns a float between 0 and max
 random(min, max); // returns a float between min and max
 ```
