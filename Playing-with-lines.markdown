@@ -145,11 +145,19 @@ But wait, that's not all! You can even nest loops; don't mess up the indexes on 
 
 ```java
 // Ok, not really lines, but so 80's....
-for(int i = 0; i < 100; i = i + 1) {
- for(int j = 0; j < 100; j = j + 1) {
-  random(255,255,255);
-  rect( 10 + 40*i, 10 + 40 *j, 10, 10);
- }
+
+void setup() {
+  size(displayWidth, displayHeight);
+  background(0);
+}
+
+void draw() {
+  for (int i = 0; i < width/40; i = i + 1) {
+    for (int j = 0; j < height/40; j = j + 1) {
+      fill(random(255), random(255), random(255));
+      rect( 10 + 40*i, 10 + 40 *j, 10, 10);
+    }
+  }
 }
 ```
 
