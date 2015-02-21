@@ -190,4 +190,32 @@ Unfortunately here the name is always the same. If you want save multiple frames
 Another simple interaction that can be pretty useful is `mouseX` and `mouseY` which gives you respectively the x and y current position of the mouse. Try to draw a rectangle that follow your mouse using those variables!
 
 ##h) The full monty##
-// coming soon! (hopefully in a couple of hours!)
+Here is an example of what you can already realise with your skills. Try to understand the code and then mess with it. Changes the value, add some more rectangles, play with the colors (create a palette for instance!), try to get rid of the reseting `background(0)`... There are many stuff to play with here.
+
+```java
+void setup() {
+  size(displayWidth, displayHeight);
+  noCursor();
+  noStroke();
+  background(0);
+}
+
+void draw() {
+  
+}
+
+
+void keyPressed() {
+  
+  background(0); // get rid of it if you want an accumulation
+  
+  // Stripe 1 Horizontal
+  fill(ra1ndom(255), random(255), random(255), random(255));
+  rect(random(width),0, random(300), height);
+ 
+  // Stripe 2 Vertical
+  fill(random(255), random(255), random(255), random(255));
+  rect(0,random(height), width,random(300));
+
+}
+```
