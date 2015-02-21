@@ -67,7 +67,7 @@ First let us modify the size of the window. For that, we use the function `size(
 
 Running your application in fullscreen is called presenting it, in the Processing lingo. To present your sketch, you can either call the command from the menu, or use a keyboard shortcut: Ctrl/Cmd + Shift + R. Yep, you just add Shift to the Run keyboard shortcut.
 
-Now you need to have a window with a size fitting your screen to have a true full screen. The way to do it is to call some variables that have a predefined value in Processing. We’ll learn more about variables later on. Those variable are `displayWidth` & `displayHeight`. They refer respectively to the width of your current screen in use, and to its height. So, who you’re gonna call? No, not ghostbusters, but the size function, with those two variables as parameters: `size(displayWidth, displayHeight);`.
+Now you need to have a window with a size fitting your screen to have a true full screen. The way to do it is to call some variables that have a predefined value in Processing. We’ll learn more about variables later on. Those variable are `displayWidth` & `displayHeight`. They refer respectively to the width of your current screen in use, and to its height. So, who you’re gonna call? No, not ghostbusters, but the size function, with those two variables as parameters: `size(displayWidth, displayHeight);`. After that, you can refere to the width and height of the window with `width` & `height`. Pro tip: if you want to center your drawing, add `width/2` & `height/2`.
 
 Now you can contemplate your creation in its full glory.
 
