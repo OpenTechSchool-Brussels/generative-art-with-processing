@@ -107,9 +107,54 @@ One last thing is needed now. When you used `random(-1,1)` for the acceleration,
 ```java
 a1 = random(-1,1) + (width/2 - x1)/3000;
 ```
+##c) Looping
 
-##c) Handling multiple Lines##
-If you used loops as for rectangles, we'd have multiple lines. But they'd be static! Not like the one we had before, with the gorgeous movement! In the for loop, the lines wouldn’t have a behavior, they would be merely plotted. If we want to have multiple lines with behaviors, we need many variables. We could define a heck load of them (x1_0, x1_1, x1_2 ...) but that’s not really the way to do it. Programming is all about simplifying, automating and organising. When we need to store multiple variable, the commonest data structure is the array.
+Computing is all about automatisation. Drawing rectangles one by one is nice but sometimes you want to repeat one part of your code many time, only with slight variations (like ... based on a counter). You can either rewrite many times your code (not only a lenghty process, but an error prone one when you need to update it) or use a new structure: the for loop:
+
+```java
+// Don't sweat too much over it, the next paragraphs explain it all
+  stroke(255,10);
+  for(int i = 0; i < 1000; i = i + 1) {
+    line( 10 + i, 100, 10, 10);
+  }
+```
+
+So, what is such block of code doing? A for loop will repeat a block of code until a condition is met. It can be understood in English as: "First do something (the initialization). Then repeatedly execute code (the block of code) until I decide you’re finished (the condition). Each time you have finished executing the code between braces, do one thing in particular (usually an iteration over a counter)".
+
+To be more precise, a for loop is defined by 4 components:
+
+* First the *initialization*, here `int i = 0;`. We define and instantiate here a new variable. Not a float, but an integer. We saw this type earlier with relation to colors. An integer is defined by its type: int, it is a variable with no fractional part, no numbers after the coma.
+
+* Then you have the *condition*, here `i < 1000`. A condition is something that is true or false. In our case, we use the mathematical symbol < to check if a value is inferior to another one. Other symbol allow for different test (such as > for superior to, or == to test the equality. Not to be confused with = for affection, a classic mistake.)
+
+* Then you have the *update*, here (as often) an iteration over an index: `i = i + 1;`.
+
+* Last,  you have the *block of code*, located between braces `{ }`, that is executed by the for loop.
+
+Let's get back to our previous code:
+
+```java
+  for(int i = 0; i < width/2; i = i + 1) {
+    line(0,0,2*i,height/2);
+  }
+```
+
+The code drawing lines will be executed repeatedly with values of i from 1 to width/2. Changing the value of i will change the offset of the x position. We should hence see a serie of lines along the x axis.
+
+But wait, that's not all! You can even nest loops; don't mess up the indexes on each loops tho.
+
+```java
+// Ok, not really lines, but so 80's....
+for(int i = 0; i < 100; i = i + 1) {
+ for(int j = 0; j < 100; j = j + 1) {
+  random(255,255,255);
+  rect( 10 + 40*i, 10 + 40 *j, 10, 10);
+ }
+}
+```
+
+##d) Handling multiple Lines##
+Hmm, looping is nice, but we lose all the gorgeous animation we had... We want our lines to have a behavior. For that, we need many variables. We could define a heck load of them (x1_0, x1_1, x1_2 ...) but that’s not really the way to do it. Programming is all about simplifying, automating and organizing. When we need to store multiple variable, the commonest data structure is the array.
 
 An array is just a list of variables, indexed over a integer. If you define an array of ten elements, you can ask it to give you its fifth element:
 
