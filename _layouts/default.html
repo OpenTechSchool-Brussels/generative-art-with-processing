@@ -28,7 +28,7 @@
             <hr />
 
 	<!-- Left menu-->
-        <div class="aside">
+        <div class="aside" id="p_menu">
             <a href="{{ site.baseurl }}/">Home</a>
             <ul>
                 {% for i in (0..site.pages.size) %} {% for post in site.pages %} {% if post.num == i %}
@@ -44,7 +44,7 @@
         </div>
 
 	<!-- Contect of the page (from Markdown files) -->
-        <div class="main">
+        <div class="main" id="p_content">
             {{ content }}
         </div>
 
