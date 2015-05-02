@@ -13,9 +13,9 @@ It’ll all make sense (or at least a bit more) when you’ll start drawing shap
 
 
 ##a) Drawing primitives##
-Yes it is. In computer graphics, the basic items that you can draw are called primitives. They range from the basic (dots, lines, rectangles) to the complexe (cubes, spheres) to the esoteric (tea pot, monkeys… depending on the software/language you’re using).
+Yes it is. In computer graphics, the basic items that you can draw are called primitives. They range from the basic (dots, lines, rectangles) to the complex (cubes, spheres) to the esoteric (tea pot, monkeys… depending on the software/language you’re using).
 
-In our case, we’ll focus with simple ones: mainly dots, lines & rectangles. If you remember, you already know how to draw a rectangle: `rect(25,25,50,50);`. This is what is called a function. A function is defined by its name (here `rect`), what it does (lines of code, here not explicited), its parameteres (the numbers you wrote in between parenthesis) and sometimes too what it returns (for instace, a fuction that adds two numbers would return a number). This part is very important since it is a basic block of programing, so don't hesitate to read it twicera to be sure you understand. Note that at the end of the line lie a quiet `;`. Its function is to say that this particular command has finished. A common mistake is to forget to put it at the end of commands. You will see that when describing the functions, we put names instead of the parametres in order to understand what is there function. It's up to you to replace them with the numbers you want.
+In our case, we’ll focus with simple ones: mainly dots, lines & rectangles. If you remember, you already know how to draw a rectangle: `rect(25,25,50,50);`. This is what is called a function. A function is defined by its name (here `rect`), what it does (lines of code, here not explicited), its parameters (the numbers you wrote in between parenthesis) and sometimes too what it returns (for instance, a function that adds two numbers would return a number). This part is very important since it is a basic block of programing, so don't hesitate to read it twice to be sure you understand. Note that at the end of the line lie a quiet `;`. Its function is to say that this particular command has finished. A common mistake is to forget to put it at the end of commands. You will see that when describing the functions, we put names instead of the parameters in order to understand what is there function. It's up to you to replace them with the numbers you want.
 
 Now, what could mean these parameters? One way to find out, which will work in all case is to explore. Change the value, and see what happens. You’ll discover that you’re feeding the function with the position of the rectangle, and its height and width following : `rect(xPosition,yPosition,width,height);`. If you can’t remember if first come width or height, it’s easy, it’s always the x (horizontal) related information that comes first. Note that the position of the rectangle doesn’t define its center, but it’s upper left corner. That’s life. (Actually some tweaking allow you to change that, but that’ll be for another lesson.)
 
@@ -67,7 +67,7 @@ First let us modify the size of the window. For that, we use the function `size(
 
 Running your application in fullscreen is called presenting it, in the Processing lingo. To present your sketch, you can either call the command from the menu, or use a keyboard shortcut: Ctrl/Cmd + Shift + R. Yep, you just add Shift to the Run keyboard shortcut.
 
-Now you need to have a window with a size fitting your screen to have a true full screen. The way to do it is to call some variables that have a predefined value in Processing. We’ll learn more about variables later on. Those variable are `displayWidth` & `displayHeight`. They refer respectively to the width of your current screen in use, and to its height. So, who you’re gonna call? No, not ghostbusters, but the size function, with those two variables as parameters: `size(displayWidth, displayHeight);`. After that, you can refere to the width and height of the window with `width` & `height`. Pro tip: if you want to center your drawing, add `width/2` & `height/2`.
+Now you need to have a window with a size fitting your screen to have a true full screen. The way to do it is to call some variables that have a predefined value in Processing. We’ll learn more about variables later on. Those variable are `displayWidth` & `displayHeight`. They refer respectively to the width of your current screen in use, and to its height. So, who you’re gonna call? No, not ghostbusters, but the size function, with those two variables as parameters: `size(displayWidth, displayHeight);`. After that, you can refer to the width and height of the window with `width` & `height`. Pro tip: if you want to center your drawing, add `width/2` & `height/2`.
 
 Now you can contemplate your creation in its full glory.
 
@@ -85,7 +85,7 @@ lines */
 ```
 
 ##d) Your first superpower: Randomness##
-Now things are getting serious. Random seems at first … well, random, but there is way much more to it. Lucky you, random is awesome. Or should I say, it’s seen as awesome. What makes Generative Art more or less like a legal LSD is that the human brain is wired to search and find patterns (like when you look at clouds). So when you will show chaos, non organise mess, the brain will try to make sense of it and the spectator will see patterns. Call that co-creation. Yep, that’s fascinating.
+Now things are getting serious. Random seems at first … well, random, but there is way much more to it. Lucky you, random is awesome. Or should I say, it’s seen as awesome. What makes Generative Art more or less like a legal LSD is that the human brain is wired to search and find patterns (like when you look at clouds). So when you will show chaos, non organize mess, the brain will try to make sense of it and the spectator will see patterns. Call that co-creation. Yep, that’s fascinating.
 
 In Processing, the basic function for randomness is the lengthy but well named `random(max)` function. Calling the random function will return you a floating number. A `float` is a number with a fraction part, such as 1.34, 10.567 or -13.00. You can call it in three different ways:
 
@@ -110,7 +110,7 @@ fill(random(255), random(255), random(255), random(255));
 rect(random(width), random(height),50,50);
 ```
 
-Try to add a few rectangles by repeating that last line, and see how they color merge depending on the alpha value you use. You can already realise that some range of alpha create better results than others.
+Try to add a few rectangles by repeating that last line, and see how they color merge depending on the alpha value you use. You can already realize that some range of alpha create better results than others.
 
 
 ##e) Adding dynamism##
@@ -162,7 +162,7 @@ There are many ways to interact with Processing, would that be with your keyboar
 
 In this section, we’ll discover another Processing standard function that is triggered each time you press a key on your keyboard: keyPressed.
 To sum up:
-- setup is only called once, at the begining
+- setup is only called once, at the beginning
 - draw is called endlessly (unless asked otherwise) after setup 
 - keyPressed is only called when you press a key on your keyboard
 - and as a bonus, guess what does the function mousePressed?
@@ -175,7 +175,7 @@ void keyPressed() {
 }
 ```
 
-Whatever code you'll put there (drawing something, changing a color, calling other functions etc. etc.), it'll be executed when you press a key. Now of course, you'll want to have more precision in the selection of the key. That requires some stuff we'll see later on in the workshop (even more that the emphase here is more on generative art than interactive art, that last part will be for another workshop!). One function that you can call by the press of a button that will be pretty useful is the `saveFrame(nameOfFile)` function. The name says it all: it save the frame as a picture in a file you decide the name of. These files are in your sketch directory, easily accessible from your Processing window by clicking on the menu *Sketch* -> *Show Sketch Folder*.
+Whatever code you'll put there (drawing something, changing a color, calling other functions etc. etc.), it'll be executed when you press a key. Now of course, you'll want to have more precision in the selection of the key. That requires some stuff we'll see later on in the workshop (even more that the emphasis here is more on generative art than interactive art, that last part will be for another workshop!). One function that you can call by the press of a button that will be pretty useful is the `saveFrame(nameOfFile)` function. The name says it all: it save the frame as a picture in a file you decide the name of. These files are in your sketch directory, easily accessible from your Processing window by clicking on the menu *Sketch* -> *Show Sketch Folder*.
 
 For instance, if you want to save what is displayed on your Processing window each time you press a key:
 
@@ -189,8 +189,8 @@ Unfortunately here the name is always the same. If you want save multiple frames
 
 Another simple interaction that can be pretty useful is `mouseX` and `mouseY` which gives you respectively the x and y current position of the mouse. Try to draw a rectangle that follow your mouse using those variables!
 
-##h) The full monty##
-Here is an example of what you can already realise with your skills. Try to understand the code and then mess with it. Changes the value, add some more rectangles, play with the colors (create a palette for instance!), try to get rid of the reseting `background(0)`... There are many stuff to play with here.
+##h) The full Monty##
+Here is an example of what you can already realize with your skills. Try to understand the code and then mess with it. Changes the value, add some more rectangles, play with the colors (create a palette for instance!), try to get rid of the resetting `background(0)`... There are many stuff to play with here.
 
 ```java
 void setup() {
