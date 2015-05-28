@@ -42,7 +42,7 @@ void draw() {
 
 
 
-Hmmm... It is a sphere, but only part of it. This is because it is drawn in the center (0,0,0). While previous object defined implicitely there position, 3D objects don't. They need to be moved (translated or rotated). We'll see how to do that in next sessions. If we can't move the world (the sphere) yet, we can at least move our perseption of it (the camera). For that, we need a function fittingly called `camera` which (beware) takes 9 paremeters as input! Don't panic, they are actually quite simple. If you want to define a camera in 3D (imagine a real one next to you), you need to know its position (xEye, yEye, yEye: 3 parameteres), where it's looking at (xLook, yLook, zLook: 3 parameters) and last its orientation: where is "up" for the camera (xUp, yUp, zUp: 3 parameteres). So all in all:
+Hmmm... It is a sphere, but only part of it. This is because it is drawn in the center (0,0,0). While previous object defined implicitely there position, 3D objects don't. They need to be moved (translated or rotated). We'll see how to do that in next sessions. If we can't move the world (the sphere) yet, we can at least move our perseption of it (the camera). For that, we need a function fittingly called `camera` which (beware) takes 9 paremeters as input! Don't panic, they are actually quite simple. If you want to define a camera in 3D (imagine a real one next to you), you need to know its position (xEye, yEye, zEye: 3 parameteres), where it's looking at (xLook, yLook, zLook: 3 parameters) and last its orientation: where is "up" for the camera (xUp, yUp, zUp: 3 parameteres). So all in all:
 
 ```java
   camera( xEye,  yEye,  zEye,
