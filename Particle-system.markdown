@@ -12,9 +12,9 @@ You’ll never guess. It’s a system with particles inside. Particles are physi
 ##a) Object, variables, methods & PVector##
 If before we had dots moving alone a frame, with only `x` evolving, now we have the whole deal: `(x,y)`. While we could treat each information independently (at the cost of repeted code, implying more energy & time spent, and errors) we can see them as a whole, as a complexe variable, called an object. There are many kind of object, in our case, this one is called a `PVector` (P for processing, Vector for ... vector). As such, it defines a new type of variable. It can be used to store 2D or 3D data, in our case we'll only take care of 2D vectors.
 
-But a `PVector` is not a variable type, it's an object type and hence define an object. Objects don't exactly behave as variables. They store some, so you can access them, but on top of that you have inner functions (called methods), in order to act on them. At first, when imagining an object, you can imagine a human. Variables of the human object could be its name (text variable), its age (int variable) and its height (float variable). Its methods could be "breathing", "running" or "screaming". Beside all that, since we handle a complexe object and not anymore a simple variable, we need to constructe it. This is done by calling a function, called the constructor (which handly has the same name than the type), it handle the whole initialisation of the object.
+But a `PVector` is not a variable type, it's an object type and hence define an object. Objects don't exactly behave as variables. They store some, so you can access them, but on top of that you have inner functions (called methods), in order to act on them. At first, when imagining an object, you can imagine a human. Variables of the human object could be its name (text variable), its age (int variable) and its height (float variable). Its methods could be "breathing", "running" or "screaming". Beside all that, since we handle a complex object and not anymore a simple variable, we need to construct it. This is done by calling a function, called the constructor (which handily has the same name than the type), it handle the whole initialisation of the object.
 
-So, let's review the different possibility of the `PVector` type. Always keep in mind `PVector` is not an object itself, but a type. So the inner variables and methods will be of the instance of this type. Let's see some of the possibilties of `PVector` instances.
+So, let's review the different possibility of the `PVector` type. Always keep in mind `PVector` is not an object itself, but a type. So the inner variables and methods will be of the instance of this type. Let's see some of the possibilities of `PVector` instances. The upcoming code has no specific aim but to show you how `PVector` are working.
 
 ```java
 PVector p1, p2, p3; // As any other type, we declare our object at the root.
@@ -28,16 +28,23 @@ void setup() {
 
 void draw() {
 
-  // Variables. Accessing them.
+  // Here how you can access each separate Variables.
   p1.x = 5;
   p1.y = p2.y + p3.y;
 
-  // Method. Using them.
-  p1.set(42, 42); // Setting both values at the same time
-  float distance = p3.mag(); // Return the mag of the PVector, its lenght
-  p1.random2D(); // Set p1 as a random 2D vector with a unitary lenght (p3.mag() == 0)
+  // Here are some useful methods.
+
+  // Setting both values at the same time
+  p1.set(42, 42);
   
-  // Unfortunately we can't use classic + - * / operators, we hence need the next methods
+  // Return the mag of the PVector, its length
+  float distance = p3.mag();
+  
+  // Set p1 as a random 2D vector with a length of 1
+  p1.random2D(); 
+  
+  // Unfortunately we can't use classic + - * / operators.
+  // Instead, we use the next methods
   p1.add(p2); // Add p2 to p1
   p3.sub(p2); // Substract p2 to p3
   p1.mult(5); // Multiple both x and y by 5
@@ -46,7 +53,7 @@ void draw() {
 }
 ```
 
-If you want to learn more about PVector methods, you can check their Processing reference pages: http://processing.org/reference/PVector.html. The reference page - http://processing.org/reference/ - is all in all the best ressource to check first or just to read through in order to learn more about the potentials of Processing. If you're wondering why `p1.y = p2.y + p3.y;` can work while we said we couldn't use `+`, it's because here we're not handling the `PVector` but `y`, one of their inner variable, which is a float, and we can use `+` on floats.
+If you want to learn more about PVector methods, you can check their Processing reference pages: http://processing.org/reference/PVector.html. The reference page - http://processing.org/reference/ - is all in all the best resource to check first or just to read through in order to learn more about the potentials of Processing. If you're wondering why `p1.y = p2.y + p3.y;` can work while we said we couldn't use `+`, it's because here we're not handling the `PVector` but `y`, one of their inner variable, which is a float, and we can use `+` on floats.
 
 
 ##b) Spread and shine##
@@ -92,11 +99,11 @@ void draw() {
 }
 ```
 
-Soooooo pretty. Try with many many particules and ... of course, transparency :D
+Soooooo pretty. Try with many many particles and ... of course, transparency :D
 
 
 ##c) Of mice and planets##
-Soooo pretty, but soooo off the screen. We have the same issue than previously with our lines. And guess what? We'll solve it the same way! Only difference is that now we're in 2D so what we did on `x` as a float, we'll do on `(x,y)` as a PVector. This time, let's make the particules attracted by the mouse cursor so that we can play with it. Don't hesitate to put other positions (such as the center of the screen, as we did for the lines).
+Soooo pretty, but soooo off the screen. We have the same issue than previously with our lines. And guess what? We'll solve it the same way! Only difference is that now we're in 2D so what we did on `x` as a float, we'll do on `(x,y)` as a PVector. This time, let's make the particles attracted by the mouse cursor so that we can play with it. Don't hesitate to put other positions (such as the centre of the screen, as we did for the lines).
 
 ```java
   // A full line, but take your time and you'll understand it.
@@ -106,8 +113,8 @@ Soooo pretty, but soooo off the screen. We have the same issue than previously w
 ```
 In this log, we discover new graphic directions and keep it simple. It doesn't mean that you have to keep it simple too,you can & should explore, for instance you can try:
 - Color varying with speed
-- Batch of particules with similar speed, similar color. Launch at the same time different batches.
-- Try to only plot the particles (not their trajectories, by using `background(0);` at the beginning of draw). Give them another graphic primitive (`ellipse(p[i].x, p[i].y,5,5);`). Set it up nice `noStroke(); fill(255,10);`. And try with many many particules!
+- Batch of particles with similar speed, similar color. Launch at the same time different batches.
+- Try to only plot the particles (not their trajectories, by using `background(0);` at the beginning of draw). Give them another graphic primitive (`ellipse(p[i].x, p[i].y,5,5);`). Set it up nice `noStroke(); fill(255,10);`. And try with many many particles!
 - Try to not anymore use the mouse as point of attraction but predefined positions, acting as planets. Bonus points if you draw the planets.
 - And many many others...
     
@@ -122,7 +129,7 @@ One possible exploration was so nice people lobbied to have it included. We can 
   }
 ```
 
-Now, we'll just draw the particles as ellipse, and lines between each of them. In order to draw the lines, we'll need to go through the particles array twice nested, once for the particle at one end of the line, once for the particule at the other end of the line. For the most acute, you'll see we made a little redundancy in the code below for simplification purpose. (Oh, and don't push up too high the number of particles...)
+Now, we'll just draw the particles as ellipse, and lines between each of them. In order to draw the lines, we'll need to go through the particles array twice nested, once for the particle at one end of the line, once for the particle at the other end of the line. For the most acute, you'll see we made a little redundancy in the code below for simplification purpose. (Oh, and don't push up too high the number of particles...)
 
 ```java
   background(0);
@@ -145,12 +152,12 @@ Now, we'll just draw the particles as ellipse, and lines between each of them. I
   }
 ```
 
-That's nice but ... the lines make it feels more mathematic than organic. Let's not always display the lines, let's do that only if particules are close enough. Ahhh at last, the ultimate computer keyword, summing up all that is a computer : `if`. Tests. And actions that follows depending on the answer, that's the basic of computing, it was high time we got there!
+That's nice but ... the lines make it feels more mathematics than organic. Let's not always display the lines, let's do that only if particles are close enough. Ahhh at last, the ultimate computer keyword, summing up all that is a computer : `if`. Tests. And actions that follows depending on the answer, that's the basic of computing, it was high time we got there!
 
-An `if` structure allow you to make decisions. At its most complete it is seperated in three parts. If it's rainning (condition) I'm staying in (action to do if condition is true) else I'm leaving (action to do if condition is false). In code you have it this way:
+An `if` structure allow you to make decisions. At its most complete it is separated in three parts. If it's raining (condition) I'm staying in (action to do if condition is true) else I'm leaving (action to do if condition is false). In code you have it this way:
 
 ```java
- if(age < 18) { // Forbiden to enter
+ if(age < 18) { // Forbidden to enter
     fill(255,0,0);
  } else { // Free to enter
     fill(0,255,0);
@@ -159,7 +166,7 @@ An `if` structure allow you to make decisions. At its most complete it is sepera
  ellipse(width/2, height/2, 100, 100);
 ```
 
-In our case, we want to draw the line only if the particles are close enough. Let's just make a test before calling the line function. Remember from previous code that the lenght of a `PVector` is accessed by its `mag` method.
+In our case, we want to draw the line only if the particles are close enough. Let's just make a test before calling the line function. Remember from previous code that the length of a `PVector` is accessed by its `mag` method.
 
 ```java
   //Draw the links
@@ -178,7 +185,7 @@ In our case, we want to draw the line only if the particles are close enough. Le
 ```
 
 ##e) Laws of attraction##
-Enough already with the particles!! .... One last thing? Ok, one last. This time let's focus on the update part, the behavior of the particles. Up to know, they were attracted to the mouse cursor or to static positions. A particle really gets neat when particules interact with each other. We had that with graphism (the lines). Now we'll have it in their behavior by making them attracted by each other. In short, for each particle, you need to apply the calculus we did to with the mouse position, but now to all the other particules' position. Some for loop in the making...
+Enough already with the particles!! .... One last thing? Ok, one last. This time let's focus on the update part, the behavior of the particles. Up to know, they were attracted to the mouse cursor or to static positions. A particle really gets neat when particles interact with each other. We had that with graphism (the lines). Now we'll have it in their behavior by making them attracted by each other. In short, for each particle, you need to apply the calculus we did to with the mouse position, but now to all the other particles' position. Some for loop in the making...
 
 Try to imagine or even code it yourself. But if you're curious, here is one possible solution (you'll see that in it, we separated the update loop in two. One part specially for the acceleration update, and then for both the speed and position). Here, getting the right acceleration is a more complex process, so we start from zero, and add up until we have the right value. Up to you to check back the parameters and see which are the most fit.
 
@@ -188,7 +195,7 @@ Try to imagine or even code it yourself. But if you're curious, here is one poss
     // Initialisation at zero
     a[i].set(0,0);
     
-    // Force between particules
+    // Force between particles
     for(int j=0; j<k; j++) {
       a[i].add( new PVector( (p[j].x - p[i].x)/15000, (p[j].y - p[i].y)/15000) );
     }
@@ -196,7 +203,7 @@ Try to imagine or even code it yourself. But if you're curious, here is one poss
     // Random force
     a[i].add( new PVector( random(-0.1,0.1), random(-0.1,0.1) ) );
 
-    // Force that pulls you toward the center
+    // Force that pulls you toward the centre
     a[i].add( new PVector( (width/2 - p[i].x)/9000, (height/2 - p[i].y)/9000 ) );
   }
 
