@@ -9,18 +9,18 @@ BEWARE, Still work in progress, especially spelling...
 Well, the workshop was meant to stop at previous section, but in bonus, here is a preview of what you can do in 3D.
 
 ##a) 2 + 1 = 3D
-So, first of all 3D is different than 2D. Who would have guesse. Previously, our canvas was our screen, with two axis horizontal (x) and vertical (y). Now we are adding another dimension, depth (z). But ... how can you represent a 3D world on a 2D screen? Short answer: you can't. And yet you do. We don't represent the 3D dimensions, but a 3D world, projected on the screen. Like a picture seen from a camera of a 3D world. This means that what you see on the screen depends on from where you are looking at your 3D world (the position of your camera in the 3D world). We'll get back to it later.
+So, first of all 3D is different than 2D. Who would have guess. Previously, our canvas was our screen, with two axis horizontal (x) and vertical (y). Now we are adding another dimension, depth (z). But ... how can you represent a 3D world on a 2D screen? Short answer: you can't. And yet you do. We don't represent the 3D dimensions, but a 3D world, projected on the screen. Like a picture seen from a camera of a 3D world. This means that what you see on the screen depends on from where you are looking at your 3D world (the position of your camera in the 3D world). We'll get back to it later.
 
 
-In our case, adding the third dimension means that we have to precise that we want to render our graphical world in 3D. For that, we just have to add one little parametre to the `size` function we used previously:
+In our case, adding the third dimension means that we have to precise that we want to render our graphical world in 3D. For that, we just have to add one little parameter to the `size` function we used previously:
 
 ```java	
   size(displayWidth, displayHeight, P3D);
 ```
 
-Previously, our center was `(width/2, height/2)` now it is `(width/2, height/2, 0)`. Z is always centered on 0, with positive value going closer to you (hence would appear bigger on screen). Try to draw a few rectangles with different depth, you'll understand better how it work.
+Previously, our centre was `(width/2, height/2)` now it is `(width/2, height/2, 0)`. Z is always centred on 0, with positive value going closer to you (hence would appear bigger on screen).
 
-But then again, if we're in 3D, it's to use 3D objects, not the previous 2D we used. Processing has 2 main 3D graphic primitives, `sphere` and `box`. The sphere function takes one parametere, its radius, such as in `sphere(100)`. The cube functions takes either 3 or 1 parametre. `box(10,20,30)` will define a box 10 long, 20 large and 30 deep. If you want a cube you can either call it `box(10,10,10)` or use the shortcut using only one parameter: `box(10)`. Here is one way to display a sphere:
+Now we're in 3D, so it's time to use 3D objects, not the previous 2D we used. Processing has 2 main 3D graphic primitives, `sphere` and `box`. The sphere function takes one parameter, its radius, such as in `sphere(100)`. The cube functions takes either 3 or 1 parameter. `box(10,20,30)` will define a box 10 long, 20 large and 30 deep. If you want a cube you can either call it `box(10,10,10)` or use the shortcut using only one parameter: `box(10)`. Here is one way to display a sphere:
 
 
 ```java	
@@ -42,7 +42,7 @@ void draw() {
 
 
 
-Hmmm... It is a sphere, but only part of it. This is because it is drawn in the center (0,0,0). While previous object defined implicitely there position, 3D objects don't. They need to be moved (translated or rotated). We'll see how to do that in next sessions. If we can't move the world (the sphere) yet, we can at least move our perseption of it (the camera). For that, we need a function fittingly called `camera` which (beware) takes 9 paremeters as input! Don't panic, they are actually quite simple. If you want to define a camera in 3D (imagine a real one next to you), you need to know its position (xEye, yEye, zEye: 3 parameteres), where it's looking at (xLook, yLook, zLook: 3 parameters) and last its orientation: where is "up" for the camera (xUp, yUp, zUp: 3 parameteres). So all in all:
+Hmmm... It is a sphere, but only part of it. This is because it is drawn in the centre (0,0,0). While previous object defined implicitly there position, 3D objects don't. They need to be moved (translated or rotated). We'll see how to do that in next sessions. If we can't move the world (the sphere) yet, we can at least move our perception of it (the camera). For that, we need a function fittingly called `camera` which (beware) takes 9 parameters as input! Don't panic, they are actually quite simple. If you want to define a camera in 3D (imagine a real one next to you), you need to know its position (xEye, yEye, zEye: 3 parameters), where it's looking at (xLook, yLook, zLook: 3 parameters) and last its orientation: where is "up" for the camera (xUp, yUp, zUp: 3 parameters). So all in all:
 
 ```java
   camera( xEye,  yEye,  zEye,
@@ -76,7 +76,7 @@ So if we want to display a cube a bit on top:
 First, you'll see that depending on where is your camera, the system is way more sensible than previously. It's not anymore linked with the number of pixel of your screen, but with a real geometry.
 
 Second... If you already tried to display many objects, with many translate, you might see something weird happening. Guess what is happening?
-The translate are not forgotten once used. They actually cummulate over time (and reset once you reach the end of `draw()`). There again might sound super weird but ... then again, it is coherent in most usages. In order to precisely place many object, we need to know when to add, and when to discard such translations. This is done with `pushMatrix()` and `popMatrix()`.
+The translate are not forgotten once used. They actually cumulate over time (and reset once you reach the end of `draw()`). There again might sound super weird but ... then again, it is coherent in most usages. In order to precisely place many object, we need to know when to add, and when to discard such translations. This is done with `pushMatrix()` and `popMatrix()`.
 
 In short, `popMatrix()` will discard all changes in your frame of reference seen since last `pushMatrix()`. An example of usage:
 
@@ -102,7 +102,6 @@ In short, `popMatrix()` will discard all changes in your frame of reference seen
 The `translate()` function (and other alike) is best seen as a mofidication of your 3D frame of reference. Your camera doesn't change but your stylus does. If you translate, you translate your whole view. The two matrix functions allow you to save or discard such frame of references.
  
 Bonus: not only can you translate, you can also rotate your shapes with three functions. `rotateX(angle)` will rotate your shape along the X axis, like wise for `rotateY(angle)` and `rotateZ(angle)`. Those functions are also being controlled by `pushMatrix()` and `popMatrix()`.
-(rotate?)
 
 Remember than you can use these functions with variables too, here is a whole example using all we learned:
 
@@ -145,11 +144,11 @@ ProTips: your computer will never implode, you're pretty safe at trying to break
 
 ##c) Using libraries
 
-One last thing before letting you go: using libraries. There is one very simple one that create some arcball kind of camera which is great for visualisation. This library is called peasycam. Lucky for you, it's incredibly simple. In the menu, click on *Sketch->Import Library->Add Library*. Then filter your research by typing "peasycam". Click to install it and bam, you're done. You can look at one example by clicking in the meny on File->Example and moving down to "contributed" library. 
+One last thing before letting you go: using libraries. There is one very simple one that create some arcball kind of camera which is great for visualization. This library is called peasycam. Lucky for you, it's incredibly simple. In the menu, click on *Sketch->Import Library->Add Library*. Then filter your research by typing "peasycam". Click to install it and bam, you're done. You can look at one example by clicking in the menu on File->Example and moving down to "contributed" library. 
 
 First you need to import the library in your sketch (before you just downloaded it as data) by adding `import peasy.*` on top of your file. Then you need to create a PeasyCam object at the root of your sketch, like you would for any other global object. And last you have to create the object.
 
-You have two ways of doing so. Either the simple `new PeasyCam(this, dist);` which aim the camera at the center of the wolrd (0,0,0). The parameter `this` refers to your sketch (don't fret too much about it, just put `this`) and `dist`, a number defining the distance of the camera from the center.
+You have two ways of doing so. Either the simple `new PeasyCam(this, dist);` which aim the camera at the center of the world (0,0,0). The parameter `this` refers to your sketch (don't fret too much about it, just put `this`) and `dist`, a number defining the distance of the camera from the center.
 The longer function reuse some parameters we discussed while defining the `camera()` function: `new PeasyCam(this, lookAtX, lookAtY, lookAtZ, dist);`. Not only do you define the distance, but also where you are looking at.
 
 Below is an example of such camera:
