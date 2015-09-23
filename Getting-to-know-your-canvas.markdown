@@ -131,7 +131,7 @@ void draw() {
 We define here two functions. A function is defined by what it does, what you feed it (input) and what it return (output).
     The type of returned value is defined before the name of the function. In our case it’s void, meaning that it doesn’t return anything. As in our previous functions, we define the parameters (input) between parenthesis. We have none there. So no input and no output. The code that the function will execute is located between the braces { }. Those braces in general define what we call a block of code. It’s there that you will put the kind of code you wrote in previous sections.
 
-Let’s use this new formalism to add regularly rectangles:
+Let’s use this new formalism to regularly add discs:
 
 ```java
 void setup() {
