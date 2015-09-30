@@ -209,11 +209,11 @@ void keyPressed() {
   
   background(0); // get rid of it if you want an accumulation
   
-  // Stripe 1 Horizontal
+  // Stripe 1 Vertical
   fill(random(255), random(255), random(255), random(255));
   rect(random(width),0, random(300), height);
  
-  // Stripe 2 Vertical
+  // Stripe 2 Horizontal
   fill(random(255), random(255), random(255), random(255));
   rect(0,random(height), width,random(300));
 
