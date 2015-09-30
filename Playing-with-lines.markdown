@@ -73,7 +73,7 @@ void draw() {
   stroke(255,255,255,10);
   x1 = x1 + random(-4,4); // We make the values evolve
   x2 = x2 + random(-4,4); //  by adding at each frame a value to them
-  line( x1, 100, x2, 500); // We then use the variables to draw the line
+  line( x1, 100, x2, height-100); // We then use the variables to draw the line
 }
 ```
 
