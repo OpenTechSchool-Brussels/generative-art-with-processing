@@ -40,7 +40,7 @@ A horizontal line is defined by a constant y value (and a vertical line by a con
 Let’s draw lines between two dots following such rules. Let’s say the first parallel line is at y=100, and the second one is at y = height-100. If we take random x for the two dots defining the line, what would be the resulting code?
 
 ```java
-line(random(10,width-10), 100,random(10,width-10),500);
+line(random(10,width-10), 100,    random(10,width-10), height-100);
 ```
 
 Might sound a bit twisted and complex at first, but you’ll get a handle on those concepts quickly, and you’ll get into the habit of modeling such system and rules.
