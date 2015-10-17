@@ -12,8 +12,8 @@ You will draw using coordinates. Basically, your screen as a grid, full of pixel
 It’ll all make sense (or at least a bit more) when you’ll start drawing shapes. And guess what, it’s the next section!
 
 
-##a) Drawing primitives##
-Yes it is. In computer graphics, the basic items that you can draw are called primitives. They range from the basic (dots, lines, rectangles) to the complex (cubes, spheres) to the esoteric (tea pot, monkeys… depending on the software/language you’re using).
+##a) Drawing geometric primitives##
+Yes it is. In computer graphics, the basic items that you can draw are called geometric primitives (or just primitives). They range from the basic (dots, lines, rectangles) to the complex (cubes, spheres) to the esoteric (tea pot, monkeys… depending on the software/language you’re using).
 
 In our case, we’ll focus with simple ones: mainly dots, lines & rectangles. If you remember, you already know how to draw a rectangle: `rect(25,25,50,50);`. This is what is called a function. A function is defined by its name (here `rect`), what it does (lines of code, here not explicited), its parameters (the numbers you wrote in between parenthesis) and sometimes too what it returns (for instance, a function that adds two numbers would return a number). This part is very important since it is a basic block of programing, so don't hesitate to read it twice to be sure you understand. Note that at the end of the line lie a quiet `;`. Its function is to say that this particular command has finished. A common mistake is to forget to put it at the end of commands. You will see that when describing the functions, we put names instead of the parameters in order to understand what is there function. It's up to you to replace them with the numbers you want.
 
